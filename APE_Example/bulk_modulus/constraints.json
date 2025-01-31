@@ -1,0 +1,48 @@
+{
+  "constraints": [
+    {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["CreateJobMurnaghan"]},
+        { "Tool" : ["CreateStructureBulk"]}
+      ]
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "Exists (?x) (<'CreateProject'(;?x)> (!F Exists (?y) (<'CreateProject'(;?y)> true)))"
+    },
+    {
+      "constraintid": "next_m",
+      "parameters": [
+        { "Tool" : ["CreateJobLammps"]},
+        { "Tool" : ["SelectLammpsPotential"]}
+      ]
+    },
+    {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["GetMDOutput"]},
+        { "Tool" : ["RunLammpsJob"]}
+      ]
+    },
+    {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["GetBulkModulus"]},
+        { "Tool" : ["RunMurnaghanJob"]}
+      ]
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "!F Exists (?x) (<'RunJob'(?x;)> (F Exists (?y) (<'RunJob'(?y;)> true)))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "!F Exists (?x) (<'CalcMD'(?x;)> (F Exists (?y) (<'CalcMD'(?y;)> true)))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "!F Exists (?x) (<'SelectPotential'(?x;)> (F Exists (?y) (<'SelectPotential'(?y;)> true)))"
+    }
+  ]
+}

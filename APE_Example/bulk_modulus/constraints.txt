@@ -1,0 +1,19 @@
+If we use operation CreateJobMurnaghan, then we must have used CreateStructureBulk prior to it:
+{
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["CreateJobMurnaghan"]},
+        { "Tool" : ["CreateStructureBulk"]}
+      ]
+    }
+We can use CreateProject first and only once:
+{
+      "constraintid": "SLTLx",
+      "formula": "Exists (?x) (<'CreateProject'(;?x)> (!F Exists (?y) (<'CreateProject'(;?y)> true)))"
+    }
+
+We can use RunJob only once with the same input:
+{
+      "constraintid": "SLTLx",
+      "formula": "!F Exists (?x) (<'RunJob'(?x;?x)> true)"
+    }
