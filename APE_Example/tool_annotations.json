@@ -46,6 +46,30 @@
         "implementation": { "code": "structure = pr.create_surface('Al', surface_type='fcc111', size=(3, 4, 4), vacuum=10, orthogonal=True)\n" }
       },
       {
+        "label": "create_vacancy",
+        "id": "create_vacancy",
+        "taxonomyOperations": ["CreateVacancy"],
+        "inputs": [
+          { "Type": ["PristineBulk"] }
+        ],
+        "outputs": [
+          { "Type": ["VacancyStructure"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
+        ],
+        "implementation": { "code": "Create Vacancy Structure\n" }
+      },
+      {
+        "label": "relax_structure",
+        "id": "relax_structure",
+        "taxonomyOperations": ["RelaxStructure"],
+        "inputs": [
+          { "Type": ["VacancyStructure"] }
+        ],
+        "outputs": [
+          { "Type": ["RelaxedVacancyStructure"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
+        ],
+        "implementation": { "code": "Relax Structure\n" }
+      },
+      {
         "label": "create_job_lammps",
         "id": "create_job_lammps",
         "taxonomyOperations": ["CreateJobLammps"],
@@ -169,6 +193,19 @@
           { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
         ],
         "implementation": { "code": "job.potential = '1996--Farkas-D--Nb-Ti-Al--LAMMPS--ipr1'\n" }
+      },
+      {
+        "label": "calculate_vacancy_formation_energy",
+        "id": "calculate_vacancy_formation_energy",
+        "taxonomyOperations": ["CalculateVacancyFormationEnergy"],
+        "inputs": [
+          { "Type": ["RelaxedVacancyStructure"] },
+          { "Type": ["PristineBulk"] }
+        ],
+        "outputs": [
+          { "Type": ["VacancyFormationEnergy"], "Format": ["Float"] }
+        ],
+        "implementation": { "code": "Calculate Vacancy Formation Energy\nEOF\n" }
       },
       {
         "label": "get_property_bulkmodulus",

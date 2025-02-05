@@ -53,6 +53,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#CalculateVacancyFormationEnergy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#CalculateVacancyFormationEnergy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#GetProperty"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#ConfigureJob -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#ConfigureJob">
@@ -347,6 +355,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxedVacancyStructure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxedVacancyStructure">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Bulk"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RunGpawJob -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RunGpawJob">
@@ -485,6 +501,22 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#VASP">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#DFT"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#VacancyFormationEnergy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#VacancyFormationEnergy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#MaterialProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#VacancyStructure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#VacancyStructure">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Bulk"/>
     </owl:Class>
     
 
