@@ -10,11 +10,12 @@ from pyiron.project import Project
 pr = Project('bulk_Al')
 
 structure = pr.create.structure.ase.bulk('Al', cubic=True)
+del structure[[1]]
 
 job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps')
 job.structure = structure
 
-job.potential = job.list_potentials()[0]
+job.potential = '1996--Farkas-D--Nb-Ti-Al--LAMMPS--ipr1'
 
 job.calc_md(temperature=800, pressure=0, n_ionic_steps=10000)
 

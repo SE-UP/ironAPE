@@ -17,7 +17,7 @@
   },
   "solutions": "1000",
   "number_of_execution_scripts": "3",
-  "number_of_generated_graphs": "6",
+  "number_of_generated_graphs": "7",
   "number_of_cwl_files": "1",
   "tool_seq_repeat": "true",
   "inputs": [],

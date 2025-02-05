@@ -14,7 +14,7 @@ structure = pr.create_surface('Al', surface_type='fcc111', size=(3, 4, 4), vacuu
 job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps')
 job.structure = structure
 
-job.potential = job.list_potentials()[0]
+job.potential = '1996--Farkas-D--Nb-Ti-Al--LAMMPS--ipr1'
 
 job.calc_md(temperature=800, pressure=0, n_ionic_steps=10000)
 

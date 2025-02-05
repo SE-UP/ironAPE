@@ -4,7 +4,7 @@ cwlVersion: v1.2
 class: Workflow
 
 label: WorkflowNo_0
-doc: A workflow including the tool(s) create_project, create_structure_pristinebulk, create_job_lammps, select_potential_lammps, calc_md, run_job_lammps, get_output_MD.
+doc: A workflow including the tool(s) create_project, create_structure_genericbulk, create_job_lammps, select_potential_lammps_farkas, calc_md, run_job_lammps, get_output_MD.
 
 inputs:
 steps:
@@ -12,26 +12,26 @@ steps:
     run: add-path-to-the-implementation/create_project.cwl 
     in: []
     out: [create_project_out_1]
-  create_structure_pristinebulk_02:
-    run: add-path-to-the-implementation/create_structure_pristinebulk.cwl 
+  create_structure_genericbulk_02:
+    run: add-path-to-the-implementation/create_structure_genericbulk.cwl 
     in:
-      create_structure_pristinebulk_in_1: create_project_01/create_project_out_1
-    out: [create_structure_pristinebulk_out_1]
+      create_structure_genericbulk_in_1: create_project_01/create_project_out_1
+    out: [create_structure_genericbulk_out_1]
   create_job_lammps_03:
     run: add-path-to-the-implementation/create_job_lammps.cwl 
     in:
       create_job_lammps_in_1: create_project_01/create_project_out_1
-      create_job_lammps_in_2: create_structure_pristinebulk_02/create_structure_pristinebulk_out_1
+      create_job_lammps_in_2: create_structure_genericbulk_02/create_structure_genericbulk_out_1
     out: [create_job_lammps_out_1]
-  select_potential_lammps_04:
-    run: add-path-to-the-implementation/select_potential_lammps.cwl 
+  select_potential_lammps_farkas_04:
+    run: add-path-to-the-implementation/select_potential_lammps_farkas.cwl 
     in:
-      select_potential_lammps_in_1: create_job_lammps_03/create_job_lammps_out_1
-    out: [select_potential_lammps_out_1]
+      select_potential_lammps_farkas_in_1: create_job_lammps_03/create_job_lammps_out_1
+    out: [select_potential_lammps_farkas_out_1]
   calc_md_05:
     run: add-path-to-the-implementation/calc_md.cwl 
     in:
-      calc_md_in_1: select_potential_lammps_04/select_potential_lammps_out_1
+      calc_md_in_1: select_potential_lammps_farkas_04/select_potential_lammps_farkas_out_1
     out: [calc_md_out_1]
   run_job_lammps_06:
     run: add-path-to-the-implementation/run_job_lammps.cwl 
