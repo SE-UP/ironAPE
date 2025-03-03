@@ -55,7 +55,7 @@
         "outputs": [
           { "Type": ["VacancyStructure"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
-        "implementation": { "code": "Create Vacancy Structure\n" }
+        "implementation": { "code": "# Create Vacancy Structure\nvacancy_structure = structure.copy()\ndel vacancy_structure[1]\n" }
       },
       {
         "label": "relax_structure",
@@ -67,7 +67,7 @@
         "outputs": [
           { "Type": ["RelaxedVacancyStructure"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
-        "implementation": { "code": "Relax Structure\n" }
+        "implementation": { "code": "# Relax Structure\nrelax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')\nrelax_job.structure = vacancy_structure\nrelax_job.potential = relax_job.list_potentials()[0]\nrelax_job.calc_minimize(pressure=0.0)\nrelax_job.run()\nrelax_structure = relax_job.get_final_structure()\n" }
       },
       {
         "label": "create_job_lammps",
@@ -205,7 +205,7 @@
         "outputs": [
           { "Type": ["VacancyFormationEnergy"], "Format": ["Float"] }
         ],
-        "implementation": { "code": "Calculate Vacancy Formation Energy\nEOF\n" }
+        "implementation": { "code": "# Calculate Vacancy Formation Energy\nbulk_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_bulk', delete_existing_job=True)\nbulk_job.structure = structure\nbulk_job.potential = bulk_job.list_potentials()[0]\nbulk_job.run()\nE_v = relax_job.output.energy_pot[-1]\nE_b = bulk_job.output.energy_pot[-1]\nE_vf = E_v - (3/4 * E_b)\nprint(E_vf)\nEOF\n" }
       },
       {
         "label": "get_property_bulkmodulus",
