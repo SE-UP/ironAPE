@@ -7,43 +7,46 @@
         "outputs": [
           { "Type": ["Project"], "Format": ["pyiron_atomistics.project.Project"] }
         ],
-        "implementation": { "code": "python - << EOF\nfrom pyiron.project import Project\npr = Project('bulk_Al')\n" }
+        "implementation": { "code": "python - << EOF\nfrom pyiron.project import Project\npr = Project('example_project')\n" }
       },
       {
         "label": "create_structure_pristinebulk",
         "id": "create_structure_pristinebulk",
         "taxonomyOperations": ["CreateStructurePristineBulk"],
         "inputs": [
-          { "Type": ["Project"] }
+          { "Type": ["Project"] },
+          { "Type": ["Element"] }
         ],
         "outputs": [
           { "Type": ["PristineBulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
-        "implementation": { "code": "structure = pr.create.structure.ase.bulk('Al', cubic=True)\n" }
+        "implementation": { "code": "structure = pr.create.structure.ase.bulk(Element, cubic=True)\n" }
       },
       {
         "label": "create_structure_genericbulk",
         "id": "create_structure_genericbulk",
         "taxonomyOperations": ["CreateStructureGenericBulk"],
         "inputs": [
-          { "Type": ["Project"] }
+          { "Type": ["Project"] },
+          { "Type": ["Element"] }
         ],
         "outputs": [
           { "Type": ["GenericBulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
-        "implementation": { "code": "structure = pr.create.structure.ase.bulk('Al', cubic=True)\ndel structure[[1]]\n" }
+        "implementation": { "code": "structure = pr.create.structure.ase.bulk(Element, cubic=True)\ndel structure[[1]]\n" }
       },
       {
         "label": "create_structure_slab",
         "id": "create_structure_slab",
         "taxonomyOperations": ["CreateStructureSlab"],
         "inputs": [
-          { "Type": ["Project"] }
+          { "Type": ["Project"] },
+          { "Type": ["Element"] }
         ],
         "outputs": [
           { "Type": ["Slab"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
-        "implementation": { "code": "structure = pr.create_surface('Al', surface_type='fcc111', size=(3, 4, 4), vacuum=10, orthogonal=True)\n" }
+        "implementation": { "code": "structure = pr.create_surface(Element, surface_type='fcc111', size=(3, 4, 4), vacuum=10, orthogonal=True)\n" }
       },
       {
         "label": "create_vacancy",
@@ -175,7 +178,8 @@
         "id": "select_potential_lammps_angelo",
         "taxonomyOperations": ["SelectPotentialAngelo"],
         "inputs": [
-          { "Type": ["LammpsGeneral"] }
+          { "Type": ["LammpsGeneral"] },
+          { "Type": ["Aluminium"] }
         ],
         "outputs": [
           { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
@@ -187,12 +191,39 @@
         "id": "select_potential_lammps_farkas",
         "taxonomyOperations": ["SelectPotentialFarkas"],
         "inputs": [
-          { "Type": ["LammpsGeneral"] }
+          { "Type": ["LammpsGeneral"] },
+          { "Type": ["Aluminium"] }
         ],
         "outputs": [
           { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
         ],
         "implementation": { "code": "job.potential = '1996--Farkas-D--Nb-Ti-Al--LAMMPS--ipr1'\n" }
+      },
+      {
+        "label": "select_potential_lammps_ackland",
+        "id": "select_potential_lammps_ackland",
+        "taxonomyOperations": ["SelectPotentialAckland"],
+        "inputs": [
+          { "Type": ["LammpsGeneral"] },
+          { "Type": ["Iron"] }
+        ],
+        "outputs": [
+          { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
+        ],
+        "implementation": { "code": "job.potential = '1997--Ackland-G-J--Fe--LAMMPS--ipr1'\n" }
+      },
+      {
+        "label": "select_potential_lammps_meyer",
+        "id": "select_potential_lammps_meyer",
+        "taxonomyOperations": ["SelectPotentialMeyer"],
+        "inputs": [
+          { "Type": ["LammpsGeneral"] },
+          { "Type": ["Iron"] }
+        ],
+        "outputs": [
+          { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
+        ],
+        "implementation": { "code": "job.potential = '1998--Meyer-R--Fe--LAMMPS--ipr1'\n" }
       },
       {
         "label": "calculate_vacancy_formation_energy",

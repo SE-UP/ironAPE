@@ -7,6 +7,9 @@ label: WorkflowNo_0
 doc: A workflow including the tool(s) create_project, create_structure_pristinebulk, create_vacancy, relax_structure, calculate_vacancy_formation_energy.
 
 inputs:
+  input_1:
+    type: File
+    format: "unknown"
 steps:
   create_project_01:
     run: add-path-to-the-implementation/create_project.cwl 
@@ -16,6 +19,7 @@ steps:
     run: add-path-to-the-implementation/create_structure_pristinebulk.cwl 
     in:
       create_structure_pristinebulk_in_1: create_project_01/create_project_out_1
+      create_structure_pristinebulk_in_2: input_1
     out: [create_structure_pristinebulk_out_1]
   create_vacancy_03:
     run: add-path-to-the-implementation/create_vacancy.cwl 
