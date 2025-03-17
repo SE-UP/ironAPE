@@ -43,10 +43,6 @@
     {
       "constraintid": "SLTLx",
       "formula": "!F Exists (?x) (<'SelectPotential'(?x;)> (F Exists (?y) (<'SelectPotential'(?y;)> true)))"
-    },
-    {
-      "constraintid": "SLTLx",
-      "formula": "!F Exists (?x) (<'CreateStructurePristineBulk'(?x;)> (F Exists (?y) (<'CreateStructurePristineBulk'(?y;)> true)))"
     }
   ]
 }

@@ -403,6 +403,22 @@
     
 
 
+    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxVacancyStructure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxVacancyStructure">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#ConfigureStructure"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxedStructure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxedStructure">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Bulk"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxedVacancyStructure -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxedVacancyStructure">
@@ -451,6 +467,22 @@
     
 
 
+    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectAluminiumPotential -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectAluminiumPotential">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectLammpsPotential"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectIronPotential -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectIronPotential">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectLammpsPotential"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectLammpsPotential -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectLammpsPotential">
@@ -470,7 +502,7 @@
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectPotentialAckland -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectPotentialAckland">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectLammpsPotential"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectIronPotential"/>
     </owl:Class>
     
 
@@ -478,7 +510,7 @@
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectPotentialAngelo -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectPotentialAngelo">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectLammpsPotential"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectAluminiumPotential"/>
     </owl:Class>
     
 
@@ -486,7 +518,7 @@
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectPotentialFarkas -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectPotentialFarkas">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectLammpsPotential"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectAluminiumPotential"/>
     </owl:Class>
     
 
@@ -494,7 +526,7 @@
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectPotentialMeyer -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectPotentialMeyer">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectLammpsPotential"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#SelectIronPotential"/>
     </owl:Class>
     
 
