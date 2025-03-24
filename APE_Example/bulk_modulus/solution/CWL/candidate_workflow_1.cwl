@@ -4,7 +4,7 @@ cwlVersion: v1.2
 class: Workflow
 
 label: WorkflowNo_0
-doc: A workflow including the tool(s) create_project, create_structure_genericbulk, create_job_gpaw, create_job_murn, run_job_murn, get_property_bulkmodulus.
+doc: A workflow including the tool(s) create_project, create_structure_genericbulk, create_job_vasp, create_job_murn, run_job_murn, get_property_bulkmodulus.
 
 inputs:
   input_1:
@@ -21,17 +21,17 @@ steps:
       create_structure_genericbulk_in_1: create_project_01/create_project_out_1
       create_structure_genericbulk_in_2: input_1
     out: [create_structure_genericbulk_out_1]
-  create_job_gpaw_03:
-    run: add-path-to-the-implementation/create_job_gpaw.cwl 
+  create_job_vasp_03:
+    run: add-path-to-the-implementation/create_job_vasp.cwl 
     in:
-      create_job_gpaw_in_1: create_project_01/create_project_out_1
-      create_job_gpaw_in_2: create_structure_genericbulk_02/create_structure_genericbulk_out_1
-    out: [create_job_gpaw_out_1]
+      create_job_vasp_in_1: create_project_01/create_project_out_1
+      create_job_vasp_in_2: create_structure_genericbulk_02/create_structure_genericbulk_out_1
+    out: [create_job_vasp_out_1]
   create_job_murn_04:
     run: add-path-to-the-implementation/create_job_murn.cwl 
     in:
       create_job_murn_in_1: create_project_01/create_project_out_1
-      create_job_murn_in_2: create_job_gpaw_03/create_job_gpaw_out_1
+      create_job_murn_in_2: create_job_vasp_03/create_job_vasp_out_1
     out: [create_job_murn_out_1]
   run_job_murn_05:
     run: add-path-to-the-implementation/run_job_murn.cwl 

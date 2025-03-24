@@ -43,6 +43,18 @@
     {
       "constraintid": "SLTLx",
       "formula": "!F Exists (?x) (<'SelectPotential'(?x;)> (F Exists (?y) (<'SelectPotential'(?y;)> true)))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "!F Exists (?x) (<'CreateVacancy'(?x;)> (F Exists (?y) (<'CreateVacancy'(?y;)> true)))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "!F Exists (?x) (<'Relax'(?x;)> (F Exists (?y) (<'Relax'(?y;)> true)))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "!F Exists (?x) (<'CreateStructure'(?x;)> (F Exists (?y) (<'CreateStructure'(?y;)> true)))"
     }
   ]
 }

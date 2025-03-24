@@ -4,16 +4,15 @@ if [ $# -ne 1 ]
 		echo "1 argument(s) expected."
 		exit
 fi
-node-88251349=$1
+node-323278960=$1
 
 python - << EOF
 from pyiron.project import Project
 pr = Project('example_project')
 
 structure = pr.create.structure.ase.bulk(Element, cubic=True)
-del structure[[1]]
 
-job = pr.create_job(job_type=pr.job_type.Vasp, job_name='vasp_job')
+job = pr.create_job(job_type=pr.job_type.Sphinx, job_name='sphinx_job')
 job.structure = structure
 
 murn = pr.create_job(job_type=pr.job_type.Murnaghan, job_name='murn')

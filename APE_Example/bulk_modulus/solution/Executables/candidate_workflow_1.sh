@@ -13,7 +13,7 @@ pr = Project('example_project')
 structure = pr.create.structure.ase.bulk(Element, cubic=True)
 del structure[[1]]
 
-job = pr.create_job(job_type=pr.job_type.Gpaw, job_name='gpaw_job')
+job = pr.create_job(job_type=pr.job_type.Vasp, job_name='vasp_job')
 job.structure = structure
 
 murn = pr.create_job(job_type=pr.job_type.Murnaghan, job_name='murn')
