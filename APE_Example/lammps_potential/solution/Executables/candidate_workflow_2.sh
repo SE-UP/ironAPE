@@ -11,6 +11,7 @@ from pyiron.project import Project
 pr = Project('example_project')
 
 structure = pr.create.structure.ase.bulk(Element, cubic=True)
+del structure[[1]]
 
 job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps')
 job.structure = structure
@@ -24,4 +25,4 @@ job.run(delete_existing_job=True)
 print(job['output/generic/temperature'])
 EOF
 
-echo "1. output is: $node-1521153506"
+echo "1. output is: $node533558938"

@@ -582,7 +582,7 @@
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#String -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#String">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Array"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Format"/>
     </owl:Class>
     
 

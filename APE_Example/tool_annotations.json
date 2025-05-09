@@ -15,7 +15,7 @@
         "taxonomyOperations": ["CreateStructurePristineBulk"],
         "inputs": [
           { "Type": ["Project"] },
-          { "Type": ["Element"] }
+          { "Type": ["Element"], "Format": ["String"] }
         ],
         "outputs": [
           { "Type": ["PristineBulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
@@ -28,7 +28,7 @@
         "taxonomyOperations": ["CreateStructureGenericBulk"],
         "inputs": [
           { "Type": ["Project"] },
-          { "Type": ["Element"] }
+          { "Type": ["Element"], "Format": ["String"] }
         ],
         "outputs": [
           { "Type": ["GenericBulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
@@ -41,7 +41,7 @@
         "taxonomyOperations": ["CreateStructureSlab"],
         "inputs": [
           { "Type": ["Project"] },
-          { "Type": ["Element"] }
+          { "Type": ["Element"], "Format": ["String"] }
         ],
         "outputs": [
           { "Type": ["Slab"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
@@ -75,7 +75,7 @@
       {
         "label": "relax_vacancy_structure",
         "id": "relax_vacancy_structure",
-        "taxonomyOperations": ["RelaxStructure"],
+        "taxonomyOperations": ["RelaxVacancyStructure"],
         "inputs": [
           { "Type": ["VacancyStructure"] }
         ],
@@ -190,8 +190,7 @@
         "id": "select_potential_lammps_angelo",
         "taxonomyOperations": ["SelectPotentialAngelo"],
         "inputs": [
-          { "Type": ["LammpsGeneral"] },
-          { "Type": ["Aluminium"] }
+          { "Type": ["LammpsGeneral"] }
         ],
         "outputs": [
           { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
@@ -203,8 +202,7 @@
         "id": "select_potential_lammps_farkas",
         "taxonomyOperations": ["SelectPotentialFarkas"],
         "inputs": [
-          { "Type": ["LammpsGeneral"] },
-          { "Type": ["Aluminium"] }
+          { "Type": ["LammpsGeneral"] }
         ],
         "outputs": [
           { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
@@ -216,8 +214,7 @@
         "id": "select_potential_lammps_ackland",
         "taxonomyOperations": ["SelectPotentialAckland"],
         "inputs": [
-          { "Type": ["LammpsGeneral"] },
-          { "Type": ["Iron"] }
+          { "Type": ["LammpsGeneral"] }
         ],
         "outputs": [
           { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
@@ -229,8 +226,7 @@
         "id": "select_potential_lammps_meyer",
         "taxonomyOperations": ["SelectPotentialMeyer"],
         "inputs": [
-          { "Type": ["LammpsGeneral"] },
-          { "Type": ["Iron"] }
+          { "Type": ["LammpsGeneral"] }
         ],
         "outputs": [
           { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
