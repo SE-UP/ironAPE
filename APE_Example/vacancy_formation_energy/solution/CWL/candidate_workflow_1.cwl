@@ -4,7 +4,7 @@ cwlVersion: v1.2
 class: Workflow
 
 label: WorkflowNo_0
-doc: A workflow including the tool(s) create_project, create_structure_pristinebulk, create_vacancy, relax_vacancy_structure, calculate_vacancy_formation_energy.
+doc: A workflow including the tool(s) create_project, create_structure_pristinebulk, relax_structure, create_vacancy, calculate_vacancy_formation_energy.
 
 inputs:
   input_1:
@@ -12,29 +12,29 @@ inputs:
     format: "unknown"
 steps:
   create_project_01:
-    run: add-path-to-the-implementation/create_project.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_project.cwl 
     in: []
     out: [create_project_out_1]
   create_structure_pristinebulk_02:
-    run: add-path-to-the-implementation/create_structure_pristinebulk.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_structure_pristinebulk.cwl 
     in:
       create_structure_pristinebulk_in_1: create_project_01/create_project_out_1
       create_structure_pristinebulk_in_2: input_1
     out: [create_structure_pristinebulk_out_1]
-  create_vacancy_03:
-    run: add-path-to-the-implementation/create_vacancy.cwl 
+  relax_structure_03:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#relax_structure.cwl 
     in:
-      create_vacancy_in_1: create_structure_pristinebulk_02/create_structure_pristinebulk_out_1
+      relax_structure_in_1: create_structure_pristinebulk_02/create_structure_pristinebulk_out_1
+    out: [relax_structure_out_1]
+  create_vacancy_04:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_vacancy.cwl 
+    in:
+      create_vacancy_in_1: relax_structure_03/relax_structure_out_1
     out: [create_vacancy_out_1]
-  relax_vacancy_structure_04:
-    run: add-path-to-the-implementation/relax_vacancy_structure.cwl 
-    in:
-      relax_vacancy_structure_in_1: create_vacancy_03/create_vacancy_out_1
-    out: [relax_vacancy_structure_out_1]
   calculate_vacancy_formation_energy_05:
-    run: add-path-to-the-implementation/calculate_vacancy_formation_energy.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#calculate_vacancy_formation_energy.cwl 
     in:
-      calculate_vacancy_formation_energy_in_1: relax_vacancy_structure_04/relax_vacancy_structure_out_1
+      calculate_vacancy_formation_energy_in_1: create_vacancy_04/create_vacancy_out_1
       calculate_vacancy_formation_energy_in_2: create_structure_pristinebulk_02/create_structure_pristinebulk_out_1
     out: [calculate_vacancy_formation_energy_out_1]
 outputs:

@@ -4,7 +4,7 @@ if [ $# -ne 1 ]
 		echo "1 argument(s) expected."
 		exit
 fi
-node-88251349=$1
+node-1685240106=$1
 
 python - << EOF
 from pyiron.project import Project
@@ -35,4 +35,4 @@ E_vf = E_v - (3/4 * E_b)
 print(E_vf)
 EOF
 
-echo "1. output is: $node865023986"
+echo "1. output is: $node-1927115303"

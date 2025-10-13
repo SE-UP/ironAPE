@@ -33,6 +33,20 @@
       ]
     },
     {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["calculate_vacancy_formation_energy"]},
+        { "Tool" : ["relax_structure"]}
+      ]
+    },
+    {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["calculate_vacancy_formation_energy"]},
+        { "Tool" : ["create_vacancy"]}
+      ]
+    },
+    {
       "constraintid": "SLTLx",
       "formula": "!F Exists (?x) (<'RunJob'(?x;)> (F Exists (?y) (<'RunJob'(?y;)> true)))"
     },
