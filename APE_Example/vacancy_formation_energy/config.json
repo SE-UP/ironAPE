@@ -9,7 +9,7 @@
   "tool_annotations_path": "/mnt/c/Users/charl/Documents/Uni/Informatik/Master/A7/ironAPE/ironAPE/APE_Example/tool_annotations.json",
   "strict_tool_annotations": "false",
   "constraints_path": "/mnt/c/Users/charl/Documents/Uni/Informatik/Master/A7/ironAPE/ironAPE/APE_Example/vacancy_formation_energy/constraints.json",
-  "timeout_sec": "20",
+  "timeout_sec": "300",
   "solutions_dir_path": "/mnt/c/Users/charl/Documents/Uni/Informatik/Master/A7/ironAPE/ironAPE/APE_Example/vacancy_formation_energy/solution/",
   "solution_length": {
     "min": 1,
@@ -17,7 +17,7 @@
   },
   "solutions": "1000",
   "number_of_execution_scripts": "3",
-  "number_of_generated_graphs": "6",
+  "number_of_generated_graphs": "20",
   "number_of_cwl_files": "1",
   "tool_seq_repeat": "true",
   "inputs": [ { "Type": ["Element"], "Format": ["String"] } ],

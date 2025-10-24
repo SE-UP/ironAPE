@@ -10,30 +10,17 @@
         "implementation": { "code": "python - << EOF\nfrom pyiron.project import Project\npr = Project('example_project')\n" }
       },
       {
-        "label": "create_structure_pristinebulk",
-        "id": "create_structure_pristinebulk",
-        "taxonomyOperations": ["CreateStructurePristineBulk"],
+        "label": "create_structure_bulk",
+        "id": "create_structure_bulk",
+        "taxonomyOperations": ["CreateStructureBulk"],
         "inputs": [
           { "Type": ["Project"] },
           { "Type": ["Element"], "Format": ["String"] }
         ],
         "outputs": [
-          { "Type": ["PristineBulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
+          { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
         "implementation": { "code": "structure = pr.create.structure.ase.bulk(Element, cubic=True)\n" }
-      },
-      {
-        "label": "create_structure_genericbulk",
-        "id": "create_structure_genericbulk",
-        "taxonomyOperations": ["CreateStructureGenericBulk"],
-        "inputs": [
-          { "Type": ["Project"] },
-          { "Type": ["Element"], "Format": ["String"] }
-        ],
-        "outputs": [
-          { "Type": ["GenericBulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
-        ],
-        "implementation": { "code": "structure = pr.create.structure.ase.bulk(Element, cubic=True)\ndel structure[[1]]\n" }
       },
       {
         "label": "create_structure_slab",
@@ -53,10 +40,22 @@
         "id": "create_vacancy",
         "taxonomyOperations": ["CreateVacancy"],
         "inputs": [
-          { "Type": ["Structure"] }
+          { "Type": ["Bulk"] }
         ],
         "outputs": [
-          { "Type": ["VacancyStructure"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
+          { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
+        ],
+        "implementation": { "code": "# Create Vacancy Structure\nvacancy_structure = structure.copy()\ndel vacancy_structure[1]\n" }
+      },
+      {
+        "label": "create_vacancy",
+        "id": "create_vacancy",
+        "taxonomyOperations": ["CreateVacancy"],
+        "inputs": [
+          { "Type": ["Slab"] }
+        ],
+        "outputs": [
+          { "Type": ["Slab"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
         "implementation": { "code": "# Create Vacancy Structure\nvacancy_structure = structure.copy()\ndel vacancy_structure[1]\n" }
       },
@@ -65,10 +64,22 @@
         "id": "relax_structure",
         "taxonomyOperations": ["RelaxStructure"],
         "inputs": [
-          { "Type": ["Structure"] }
+          { "Type": ["Bulk"] }
         ],
         "outputs": [
-          { "Type": ["RelaxedStructure"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
+          { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
+        ],
+        "implementation": { "code": "# Relax Structure\nrelax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')\nrelax_job.structure = vacancy_structure\nrelax_job.potential = relax_job.list_potentials()[0]\nrelax_job.calc_minimize(pressure=0.0)\nrelax_job.run()\nrelax_structure = relax_job.get_final_structure()\n" }
+      },
+      {
+        "label": "relax_structure",
+        "id": "relax_structure",
+        "taxonomyOperations": ["RelaxStructure"],
+        "inputs": [
+          { "Type": ["Slab"] }
+        ],
+        "outputs": [
+          { "Type": ["Slab"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
         "implementation": { "code": "# Relax Structure\nrelax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')\nrelax_job.structure = vacancy_structure\nrelax_job.potential = relax_job.list_potentials()[0]\nrelax_job.calc_minimize(pressure=0.0)\nrelax_job.run()\nrelax_structure = relax_job.get_final_structure()\n" }
       },
@@ -81,7 +92,7 @@
           { "Type": ["Structure"] }
         ],
         "outputs": [
-          { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
+          { "Type": ["Lammps"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
         ],
         "implementation": { "code": "job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps')\njob.structure = structure\n" }
       },
@@ -130,7 +141,7 @@
         "taxonomyOperations": ["CreateJobMurnaghan"],
         "inputs": [
           { "Type": ["Project"] },
-          { "Type": ["DFT", "LammpsGeneral"] }
+          { "Type": ["DFT", "Lammps"] }
         ],
         "outputs": [
           { "Type": ["Murnaghan"], "Format": ["pyiron_atomistics.atomistics.master.murnaghan.Murnaghan"] }
@@ -142,10 +153,10 @@
         "id": "run_job_lammps",
         "taxonomyOperations": ["RunLammpsJob"],
         "inputs": [
-          { "Type": ["LammpsCalcMDJob"] }
+          { "Type": ["Lammps"] }
         ],
         "outputs": [
-          { "Type": ["LammpsCalcMDJob"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
+          { "Type": ["Lammps"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
         ],
         "implementation": { "code": "job.run(delete_existing_job=True)\n" }
       },
@@ -169,57 +180,21 @@
           { "Type": ["Lammps"] }
         ],
         "outputs": [
-          { "Type": ["LammpsCalcMDJob"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
+          { "Type": ["Lammps"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
         ],
         "implementation": { "code": "job.calc_md(temperature=800, pressure=0, n_ionic_steps=10000)\n" }
       },
       {
-        "label": "select_potential_lammps_angelo",
-        "id": "select_potential_lammps_angelo",
-        "taxonomyOperations": ["SelectPotentialAngelo"],
+        "label": "select_potential",
+        "id": "select_potential",
+        "taxonomyOperations": ["SelectPotential"],
         "inputs": [
-          { "Type": ["LammpsGeneral"] }
+          { "Type": ["Lammps"] }
         ],
         "outputs": [
-          { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
+          { "Type": ["Lammps"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
         ],
-        "implementation": { "code": "job.potential = '1995--Angelo-J-E--Ni-Al-H--LAMMPS--ipr1'\n" }
-      },
-      {
-        "label": "select_potential_lammps_farkas",
-        "id": "select_potential_lammps_farkas",
-        "taxonomyOperations": ["SelectPotentialFarkas"],
-        "inputs": [
-          { "Type": ["LammpsGeneral"] }
-        ],
-        "outputs": [
-          { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
-        ],
-        "implementation": { "code": "job.potential = '1996--Farkas-D--Nb-Ti-Al--LAMMPS--ipr1'\n" }
-      },
-      {
-        "label": "select_potential_lammps_ackland",
-        "id": "select_potential_lammps_ackland",
-        "taxonomyOperations": ["SelectPotentialAckland"],
-        "inputs": [
-          { "Type": ["LammpsGeneral"] }
-        ],
-        "outputs": [
-          { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
-        ],
-        "implementation": { "code": "job.potential = '1997--Ackland-G-J--Fe--LAMMPS--ipr1'\n" }
-      },
-      {
-        "label": "select_potential_lammps_meyer",
-        "id": "select_potential_lammps_meyer",
-        "taxonomyOperations": ["SelectPotentialMeyer"],
-        "inputs": [
-          { "Type": ["LammpsGeneral"] }
-        ],
-        "outputs": [
-          { "Type": ["LammpsGeneral"], "Format": ["pyiron_atomistics.lammps.lammps.Lammps"] }
-        ],
-        "implementation": { "code": "job.potential = '1998--Meyer-R--Fe--LAMMPS--ipr1'\n" }
+        "implementation": { "code": "job.potential = 'insert potential'\n" }
       },
       {
         "label": "calculate_vacancy_formation_energy",
@@ -227,7 +202,7 @@
         "taxonomyOperations": ["CalculateVacancyFormationEnergy"],
         "inputs": [
           { "Type": ["Structure"] },
-          { "Type": ["PristineBulk"] }
+          { "Type": ["Structure"] }
         ],
         "outputs": [
           { "Type": ["VacancyFormationEnergy"], "Format": ["Float"] }
@@ -251,7 +226,7 @@
         "id": "get_output_MD",
         "taxonomyOperations": ["GetMDOutput"],
         "inputs": [
-          { "Type": ["LammpsCalcMDJob"] }
+          { "Type": ["Lammps"] }
         ],
         "outputs": [
           { "Type": ["MolecularDynamicsOutput"], "Format": ["Array"] }

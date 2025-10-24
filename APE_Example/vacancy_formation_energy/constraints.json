@@ -1,13 +1,6 @@
 {
   "constraints": [
     {
-      "constraintid": "depend_m",
-      "parameters": [
-        { "Tool" : ["CreateJobMurnaghan"]},
-        { "Tool" : ["CreateStructureBulk"]}
-      ]
-    },
-    {
       "constraintid": "SLTLx",
       "formula": "Exists (?x) (<'CreateProject'(;?x)> (!F Exists (?y) (<'CreateProject'(;?y)> true)))"
     },
@@ -15,7 +8,14 @@
       "constraintid": "next_m",
       "parameters": [
         { "Tool" : ["CreateJobLammps"]},
-        { "Tool" : ["SelectLammpsPotential"]}
+        { "Tool" : ["SelectPotential"]}
+      ]
+    },
+    {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["CreateJobMurnaghan"]},
+        { "Tool" : ["CreateStructureBulk"]}
       ]
     },
     {
@@ -35,40 +35,58 @@
     {
       "constraintid": "depend_m",
       "parameters": [
-        { "Tool" : ["calculate_vacancy_formation_energy"]},
-        { "Tool" : ["relax_structure"]}
+        { "Tool" : ["CalculateVacancyFormationEnergy"]},
+        { "Tool" : ["RelaxStructure"]}
       ]
     },
     {
       "constraintid": "depend_m",
       "parameters": [
-        { "Tool" : ["calculate_vacancy_formation_energy"]},
-        { "Tool" : ["create_vacancy"]}
+        { "Tool" : ["CalculateVacancyFormationEnergy"]},
+        { "Tool" : ["CreateVacancy"]}
       ]
     },
     {
-      "constraintid": "SLTLx",
-      "formula": "!F Exists (?x) (<'RunJob'(?x;)> (F Exists (?y) (<'RunJob'(?y;)> true)))"
+      "constraintid": "connected_op",
+      "parameters": [
+        { "Tool" : ["CreateStructure"]},
+        { "Tool" : ["CalculateVacancyFormationEnergy"]}
+      ]
     },
     {
-      "constraintid": "SLTLx",
-      "formula": "!F Exists (?x) (<'CalcMD'(?x;)> (F Exists (?y) (<'CalcMD'(?y;)> true)))"
+      "constraintid": "itn_m",
+      "parameters": [
+        { "Tool" : ["RunJob"]},
+        { "Tool" : ["RunJob"]}
+      ]
     },
     {
-      "constraintid": "SLTLx",
-      "formula": "!F Exists (?x) (<'SelectPotential'(?x;)> (F Exists (?y) (<'SelectPotential'(?y;)> true)))"
+      "constraintid": "itn_m",
+      "parameters": [
+        { "Tool" : ["CalcMD"]},
+        { "Tool" : ["CalcMD"]}
+      ]
     },
     {
-      "constraintid": "SLTLx",
-      "formula": "!F Exists (?x) (<'CreateVacancy'(?x;)> (F Exists (?y) (<'CreateVacancy'(?y;)> true)))"
+      "constraintid": "itn_m",
+      "parameters": [
+        { "Tool" : ["SelectPotential"]},
+        { "Tool" : ["SelectPotential"]}
+      ]
     },
     {
-      "constraintid": "SLTLx",
-      "formula": "!F Exists (?x) (<'Relax'(?x;)> (F Exists (?y) (<'Relax'(?y;)> true)))"
+      "constraintid": "itn_m",
+      "parameters": [
+        { "Tool" : ["CreateVacancy"]},
+        { "Tool" : ["CreateVacancy"]}
+      ]
     },
     {
-      "constraintid": "SLTLx",
-      "formula": "!F Exists (?x) (<'CreateStructure'(?x;)> (F Exists (?y) (<'CreateStructure'(?y;)> true)))"
+      "constraintid": "itn_m",
+      "parameters": [
+        { "Tool" : ["Relax"]},
+        { "Tool" : ["Relax"]}
+      ]
     }
   ]
 }

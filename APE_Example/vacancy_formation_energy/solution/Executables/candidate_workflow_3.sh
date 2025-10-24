@@ -10,7 +10,7 @@ python - << EOF
 from pyiron.project import Project
 pr = Project('example_project')
 
-structure = pr.create.structure.ase.bulk(Element, cubic=True)
+structure = pr.create_surface(Element, surface_type='fcc111', size=(3, 4, 4), vacuum=10, orthogonal=True)
 
 # Create Vacancy Structure
 vacancy_structure = structure.copy()
