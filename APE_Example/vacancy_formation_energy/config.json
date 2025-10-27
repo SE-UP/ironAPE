@@ -18,7 +18,7 @@
   "solutions": "1000",
   "number_of_execution_scripts": "3",
   "number_of_generated_graphs": "20",
-  "number_of_cwl_files": "1",
+  "number_of_cwl_files": "5",
   "tool_seq_repeat": "true",
   "inputs": [ { "Type": ["Element"], "Format": ["String"] } ],
   "outputs": [

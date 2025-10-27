@@ -5,34 +5,6 @@
       "formula": "Exists (?x) (<'CreateProject'(;?x)> (!F Exists (?y) (<'CreateProject'(;?y)> true)))"
     },
     {
-      "constraintid": "next_m",
-      "parameters": [
-        { "Tool" : ["CreateJobLammps"]},
-        { "Tool" : ["SelectPotential"]}
-      ]
-    },
-    {
-      "constraintid": "depend_m",
-      "parameters": [
-        { "Tool" : ["CreateJobMurnaghan"]},
-        { "Tool" : ["CreateStructureBulk"]}
-      ]
-    },
-    {
-      "constraintid": "depend_m",
-      "parameters": [
-        { "Tool" : ["GetMDOutput"]},
-        { "Tool" : ["RunLammpsJob"]}
-      ]
-    },
-    {
-      "constraintid": "depend_m",
-      "parameters": [
-        { "Tool" : ["GetBulkModulus"]},
-        { "Tool" : ["RunMurnaghanJob"]}
-      ]
-    },
-    {
       "constraintid": "depend_m",
       "parameters": [
         { "Tool" : ["CalculateVacancyFormationEnergy"]},
@@ -43,6 +15,13 @@
       "constraintid": "depend_m",
       "parameters": [
         { "Tool" : ["CalculateVacancyFormationEnergy"]},
+        { "Tool" : ["CreateVacancy"]}
+      ]
+    },
+    {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["RelaxStructure"]},
         { "Tool" : ["CreateVacancy"]}
       ]
     },
@@ -58,20 +37,6 @@
       "parameters": [
         { "Tool" : ["RunJob"]},
         { "Tool" : ["RunJob"]}
-      ]
-    },
-    {
-      "constraintid": "itn_m",
-      "parameters": [
-        { "Tool" : ["CalcMD"]},
-        { "Tool" : ["CalcMD"]}
-      ]
-    },
-    {
-      "constraintid": "itn_m",
-      "parameters": [
-        { "Tool" : ["SelectPotential"]},
-        { "Tool" : ["SelectPotential"]}
       ]
     },
     {
