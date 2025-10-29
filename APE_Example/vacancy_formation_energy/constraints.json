@@ -5,6 +5,12 @@
       "formula": "Exists (?x) (<'CreateProject'(;?x)> (!F Exists (?y) (<'CreateProject'(;?y)> true)))"
     },
     {
+      "constraintid": "use_t",
+      "parameters": [
+        { "Type" : ["Bulk"]}
+      ]
+    },
+    {
       "constraintid": "depend_m",
       "parameters": [
         { "Tool" : ["CalculateVacancyFormationEnergy"]},
