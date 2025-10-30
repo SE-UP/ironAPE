@@ -15,7 +15,7 @@
       "constraintid": "next_m",
       "parameters": [
         { "Tool" : ["CreateJobLammps"]},
-        { "Tool" : ["SelectLammpsPotential"]}
+        { "Tool" : ["SelectPotential"]}
       ]
     },
     {
@@ -50,7 +50,7 @@
     },
     {
       "constraintid": "SLTLx",
-      "formula": "!F Exists (?x) (<'Relax'(?x;)> (F Exists (?y) (<'Relax'(?y;)> true)))"
+      "formula": "!F Exists (?x) (<'RelaxStructure'(?x;)> (F Exists (?y) (<'RelaxStructure'(?y;)> true)))"
     },
     {
       "constraintid": "SLTLx",

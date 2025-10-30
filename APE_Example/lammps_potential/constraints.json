@@ -15,7 +15,7 @@
       "constraintid": "next_m",
       "parameters": [
         { "Tool" : ["CreateJobLammps"]},
-        { "Tool" : ["SelectLammpsPotential"]}
+        { "Tool" : ["SelectPotential"]}
       ]
     },
     {
@@ -30,6 +30,20 @@
       "parameters": [
         { "Tool" : ["GetBulkModulus"]},
         { "Tool" : ["RunMurnaghanJob"]}
+      ]
+    },
+    {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["GetMDOutput"]},
+        { "Tool" : ["CalcMD"]}
+      ]
+    },
+    {
+      "constraintid": "ite_m",
+      "parameters": [
+        { "Tool" : ["CalcMD"]},
+        { "Tool" : ["RunLammpsJob"]}
       ]
     },
     {
@@ -50,7 +64,7 @@
     },
     {
       "constraintid": "SLTLx",
-      "formula": "!F Exists (?x) (<'Relax'(?x;)> (F Exists (?y) (<'Relax'(?y;)> true)))"
+      "formula": "!F Exists (?x) (<'RelaxStructure'(?x;)> (F Exists (?y) (<'RelaxStructure'(?y;)> true)))"
     },
     {
       "constraintid": "SLTLx",

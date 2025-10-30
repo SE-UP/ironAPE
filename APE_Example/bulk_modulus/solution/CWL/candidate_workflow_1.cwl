@@ -4,7 +4,7 @@ cwlVersion: v1.2
 class: Workflow
 
 label: WorkflowNo_0
-doc: A workflow including the tool(s) create_project, create_structure_genericbulk, create_job_vasp, create_job_murn, run_job_murn, get_property_bulkmodulus.
+doc: A workflow including the tool(s) create_project, create_structure_bulk, create_job_vasp, create_job_murn, run_job_murn, get_property_bulkmodulus.
 
 inputs:
   input_1:
@@ -12,34 +12,34 @@ inputs:
     format: "unknown"
 steps:
   create_project_01:
-    run: add-path-to-the-implementation/create_project.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_project.cwl 
     in: []
     out: [create_project_out_1]
-  create_structure_genericbulk_02:
-    run: add-path-to-the-implementation/create_structure_genericbulk.cwl 
+  create_structure_bulk_02:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_structure_bulk.cwl 
     in:
-      create_structure_genericbulk_in_1: create_project_01/create_project_out_1
-      create_structure_genericbulk_in_2: input_1
-    out: [create_structure_genericbulk_out_1]
+      create_structure_bulk_in_1: create_project_01/create_project_out_1
+      create_structure_bulk_in_2: input_1
+    out: [create_structure_bulk_out_1]
   create_job_vasp_03:
-    run: add-path-to-the-implementation/create_job_vasp.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_job_vasp.cwl 
     in:
       create_job_vasp_in_1: create_project_01/create_project_out_1
-      create_job_vasp_in_2: create_structure_genericbulk_02/create_structure_genericbulk_out_1
+      create_job_vasp_in_2: create_structure_bulk_02/create_structure_bulk_out_1
     out: [create_job_vasp_out_1]
   create_job_murn_04:
-    run: add-path-to-the-implementation/create_job_murn.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_job_murn.cwl 
     in:
       create_job_murn_in_1: create_project_01/create_project_out_1
       create_job_murn_in_2: create_job_vasp_03/create_job_vasp_out_1
     out: [create_job_murn_out_1]
   run_job_murn_05:
-    run: add-path-to-the-implementation/run_job_murn.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#run_job_murn.cwl 
     in:
       run_job_murn_in_1: create_job_murn_04/create_job_murn_out_1
     out: [run_job_murn_out_1]
   get_property_bulkmodulus_06:
-    run: add-path-to-the-implementation/get_property_bulkmodulus.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#get_property_bulkmodulus.cwl 
     in:
       get_property_bulkmodulus_in_1: run_job_murn_05/run_job_murn_out_1
     out: [get_property_bulkmodulus_out_1]

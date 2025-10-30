@@ -4,7 +4,7 @@ cwlVersion: v1.2
 class: Workflow
 
 label: WorkflowNo_0
-doc: A workflow including the tool(s) create_project, create_structure_slab, create_job_lammps, select_potential_lammps_farkas, calc_md, run_job_lammps, get_output_MD.
+doc: A workflow including the tool(s) create_project, create_structure_bulk, create_job_lammps, select_potential, calc_md, run_job_lammps, get_output_MD.
 
 inputs:
   input_1:
@@ -12,38 +12,38 @@ inputs:
     format: "unknown"
 steps:
   create_project_01:
-    run: add-path-to-the-implementation/create_project.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_project.cwl 
     in: []
     out: [create_project_out_1]
-  create_structure_slab_02:
-    run: add-path-to-the-implementation/create_structure_slab.cwl 
+  create_structure_bulk_02:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_structure_bulk.cwl 
     in:
-      create_structure_slab_in_1: create_project_01/create_project_out_1
-      create_structure_slab_in_2: input_1
-    out: [create_structure_slab_out_1]
+      create_structure_bulk_in_1: create_project_01/create_project_out_1
+      create_structure_bulk_in_2: input_1
+    out: [create_structure_bulk_out_1]
   create_job_lammps_03:
-    run: add-path-to-the-implementation/create_job_lammps.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_job_lammps.cwl 
     in:
       create_job_lammps_in_1: create_project_01/create_project_out_1
-      create_job_lammps_in_2: create_structure_slab_02/create_structure_slab_out_1
+      create_job_lammps_in_2: create_structure_bulk_02/create_structure_bulk_out_1
     out: [create_job_lammps_out_1]
-  select_potential_lammps_farkas_04:
-    run: add-path-to-the-implementation/select_potential_lammps_farkas.cwl 
+  select_potential_04:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#select_potential.cwl 
     in:
-      select_potential_lammps_farkas_in_1: create_job_lammps_03/create_job_lammps_out_1
-    out: [select_potential_lammps_farkas_out_1]
+      select_potential_in_1: create_job_lammps_03/create_job_lammps_out_1
+    out: [select_potential_out_1]
   calc_md_05:
-    run: add-path-to-the-implementation/calc_md.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#calc_md.cwl 
     in:
-      calc_md_in_1: select_potential_lammps_farkas_04/select_potential_lammps_farkas_out_1
+      calc_md_in_1: select_potential_04/select_potential_out_1
     out: [calc_md_out_1]
   run_job_lammps_06:
-    run: add-path-to-the-implementation/run_job_lammps.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#run_job_lammps.cwl 
     in:
       run_job_lammps_in_1: calc_md_05/calc_md_out_1
     out: [run_job_lammps_out_1]
   get_output_MD_07:
-    run: add-path-to-the-implementation/get_output_MD.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#get_output_MD.cwl 
     in:
       get_output_MD_in_1: run_job_lammps_06/run_job_lammps_out_1
     out: [get_output_MD_out_1]

@@ -299,22 +299,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#LammpsCalcMDJob -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#LammpsCalcMDJob">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Lammps"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#LammpsGeneral -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#LammpsGeneral">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Lammps"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#LammpsPotential -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#LammpsPotential">
@@ -379,26 +363,10 @@
     
 
 
-    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Relax -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Relax">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#ConfigureStructure"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxStructure -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxStructure">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Relax"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxVacancyStructure -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#RelaxVacancyStructure">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#Relax"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#ConfigureStructure"/>
     </owl:Class>
     
 
