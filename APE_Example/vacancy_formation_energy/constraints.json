@@ -32,13 +32,6 @@
       ]
     },
     {
-      "constraintid": "connected_op",
-      "parameters": [
-        { "Tool" : ["CreateStructure"]},
-        { "Tool" : ["CalculateVacancyFormationEnergy"]}
-      ]
-    },
-    {
       "constraintid": "itn_m",
       "parameters": [
         { "Tool" : ["RunJob"]},
@@ -55,8 +48,15 @@
     {
       "constraintid": "itn_m",
       "parameters": [
-        { "Tool" : ["Relax"]},
-        { "Tool" : ["Relax"]}
+        { "Tool" : ["RelaxStructure"]},
+        { "Tool" : ["RelaxStructure"]}
+      ]
+    },
+    {
+      "constraintid": "itn_m",
+      "parameters": [
+        { "Tool" : ["CreateStructure"]},
+        { "Tool" : ["CreateStructure"]}
       ]
     }
   ]
