@@ -1,6 +1,6 @@
 {
-  "ontology_path": "./bulkmodulus_taxonomy.owl",
-  "ontologyPrefixIRI": "http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#",
+  "ontology_path": "./MaterialsScience_taxonomy.owl",
+  "ontologyPrefixIRI": "http://www.semanticweb.org/materials_science#",
   "toolsTaxonomyRoot": "Tool",
   "dataDimensionsTaxonomyRoots": [
     "Type",
