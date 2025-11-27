@@ -12,27 +12,27 @@ inputs:
     format: "unknown"
 steps:
   create_project_01:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_project.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_project.cwl 
     in: []
     out: [create_project_out_1]
   create_structure_bulk_02:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_structure_bulk.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_structure_bulk.cwl 
     in:
       create_structure_bulk_in_1: create_project_01/create_project_out_1
       create_structure_bulk_in_2: input_1
     out: [create_structure_bulk_out_1]
   create_vacancy_03:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#create_vacancy.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_vacancy.cwl 
     in:
       create_vacancy_in_1: create_structure_bulk_02/create_structure_bulk_out_1
     out: [create_vacancy_out_1]
   relax_structure_04:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#relax_structure.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#relax_structure.cwl 
     in:
       relax_structure_in_1: create_vacancy_03/create_vacancy_out_1
     out: [relax_structure_out_1]
   calculate_vacancy_formation_energy_05:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/charl/ontologies/2024/11/bulk_modulus#calculate_vacancy_formation_energy.cwl 
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calculate_vacancy_formation_energy.cwl 
     in:
       calculate_vacancy_formation_energy_in_1: create_structure_bulk_02/create_structure_bulk_out_1
       calculate_vacancy_formation_energy_in_2: relax_structure_04/relax_structure_out_1

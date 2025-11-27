@@ -36,6 +36,18 @@
         "implementation": { "code": "structure = pr.create_surface(Element, surface_type='fcc111', size=(3, 4, 4), vacuum=10, orthogonal=True)\n" }
       },
       {
+        "label": "plot_structure",
+        "id": "plot_structure",
+        "taxonomyOperations": ["PlotStructure"],
+        "inputs": [
+          { "Type": ["Structure"] }
+        ],
+        "outputs": [
+          { "Type": ["3dPlot"], "Format": ["PlotFormat"] }
+        ],
+        "implementation": { "code": "" }
+      },
+      {
         "label": "create_vacancy",
         "id": "create_vacancy",
         "taxonomyOperations": ["CreateVacancy"],

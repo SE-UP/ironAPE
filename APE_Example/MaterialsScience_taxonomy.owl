@@ -339,6 +339,38 @@
     
 
 
+    <!-- http://www.semanticweb.org/materials_science#Plot -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#Plot">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#Type"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#PlotFormat -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#PlotFormat">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#Format"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#PlotStructure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#PlotStructure">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#Plotting"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#Plotting -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#Plotting">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#Tool"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/materials_science#Potential -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#Potential">
@@ -573,6 +605,14 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#1998--Meyer-R--Fe--LAMMPS--ipr1">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#IronPotential"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#3dPlot -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#3dPlot">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#Plot"/>
     </owl:Class>
 </rdf:RDF>
 

@@ -4,13 +4,13 @@ if [ $# -ne 1 ]
 		echo "1 argument(s) expected."
 		exit
 fi
-node-1685240106=$1
+node1311692442=$1
 
 python - << EOF
 from pyiron.project import Project
 pr = Project('example_project')
 
-structure = pr.create.structure.ase.bulk(Element, cubic=True)
+structure = pr.create_surface(Element, surface_type='fcc111', size=(3, 4, 4), vacuum=10, orthogonal=True)
 
 # Create Vacancy Structure
 vacancy_structure = structure.copy()
@@ -35,4 +35,4 @@ E_vf = E_v - (3/4 * E_b)
 print(E_vf)
 EOF
 
-echo "1. output is: $node-1927115303"
+echo "1. output is: $node-364225255"
