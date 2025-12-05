@@ -1,0 +1,64 @@
+{
+  "constraints": [
+    {
+      "constraintid": "SLTLx",
+      "formula": "Exists (?x) (<'CreateProject'(;?x)> (!F Exists (?y) (<'CreateProject'(;?y)> true)))"
+    },
+    {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["CalculateDefectFormationEnergy"]},
+        { "Tool" : ["RelaxStructure"]}
+      ]
+    },
+    {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["CalculateDefectFormationEnergy"]},
+        { "Tool" : ["CreateVacancy"]}
+      ]
+    },
+    {
+      "constraintid": "depend_m",
+      "parameters": [
+        { "Tool" : ["RelaxStructure"]},
+        { "Tool" : ["CreateDefect"]}
+      ]
+    },
+    {
+      "constraintid": "itn_m",
+      "parameters": [
+        { "Tool" : ["RelaxStructure"]},
+        { "Tool" : ["CreateDefect"]}
+      ]
+    },
+    {
+      "constraintid": "itn_m",
+      "parameters": [
+        { "Tool" : ["RunJob"]},
+        { "Tool" : ["RunJob"]}
+      ]
+    },
+    {
+      "constraintid": "itn_m",
+      "parameters": [
+        { "Tool" : ["RelaxStructure"]},
+        { "Tool" : ["RelaxStructure"]}
+      ]
+    },
+    {
+      "constraintid": "itn_m",
+      "parameters": [
+        { "Tool" : ["CreateStructure"]},
+        { "Tool" : ["CreateStructure"]}
+      ]
+    },
+    {
+      "constraintid": "connected_op",
+      "parameters": [
+        { "Tool" : ["CreateStructure"]},
+        { "Tool" : ["CalculateDefectFormationEnergy"]}
+      ]
+    }
+  ]
+}
