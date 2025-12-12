@@ -13,11 +13,11 @@
   "solutions_dir_path": "/mnt/c/Users/charl/Documents/Uni/Informatik/Master/A7/ironAPE/ironAPE/APE_Example/defect_concentration/solution/",
   "solution_length": {
     "min": 1,
-    "max": 8
+    "max": 9
   },
   "solutions": "1000",
   "number_of_execution_scripts": "3",
-  "number_of_generated_graphs": "20",
+  "number_of_generated_graphs": "25",
   "number_of_cwl_files": "5",
   "tool_seq_repeat": "false",
   "inputs": [ { "Type": ["FeAl"], "Format": ["String"] } ],

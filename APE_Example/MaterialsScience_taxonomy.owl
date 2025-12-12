@@ -109,17 +109,17 @@
     
 
 
-    <!-- http://www.semanticweb.org/materials_science#CalculateDFE2ASA -->
+    <!-- http://www.semanticweb.org/materials_science#CalculateDFE2AS -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDFE2ASA">
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDFE2AS">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
     </owl:Class>
     
 
 
-    <!-- http://www.semanticweb.org/materials_science#CalculateDFE_2VacA -->
+    <!-- http://www.semanticweb.org/materials_science#CalculateDFE2Vac -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDFE_2VacA">
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDFE2Vac">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
     </owl:Class>
     
@@ -145,6 +145,14 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateVacancyFormationEnergy">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#ChemicalPotential -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#ChemicalPotential">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#MaterialProperty"/>
     </owl:Class>
     
 
@@ -382,6 +390,14 @@
     <!-- http://www.semanticweb.org/materials_science#GetBulkModulus -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#GetBulkModulus">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#GetChemicalPotential -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#GetChemicalPotential">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
     </owl:Class>
     

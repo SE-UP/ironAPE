@@ -15,7 +15,7 @@
       "constraintid": "depend_m",
       "parameters": [
         { "Tool" : ["CalculateDefectFormationEnergy"]},
-        { "Tool" : ["CreateVacancy"]}
+        { "Tool" : ["CreateDefect"]}
       ]
     },
     {
@@ -24,6 +24,39 @@
         { "Tool" : ["RelaxStructure"]},
         { "Tool" : ["CreateDefect"]}
       ]
+    },
+    {
+      "constraintid": "SLTLx",
+      "description": "",
+      "formula": " (! F <'CalculateVacancyFormationEnergy'(;)> true) | (!(F <'CreateAntisite'(;)> (F <'CalculateVacancyFormationEnergy'(;)> true)))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "(! F <'CalculateVacancyFormationEnergy'(;)> true) | (G !(<'CreateVacancy'(;)> F <'CreateVacancy'(;)> true))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": " (! F <'CalculateAntisiteFormationEnergy'(;)> true) | (!(F <'CreateVacancy'(;)> (F <'CalculateAntisiteFormationEnergy'(;)> true)))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "(! F <'CalculateAntisiteFormationEnergy'(;)> true) | (G !(<'CreateAntisite'(;)> F <'CreateAntisite'(;)> true))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": " (! F <'CalculateDFE2Vac'(;)> true) | (!(F <'CreateAntisite'(;)> (F <'CalculateDFE2Vac'(;)> true)))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "(! F <'CalculateDFE2Vac'(;)> true) | ((F <'CreateVacancy'(;)> <'CreateVacancy'(;)> true) & (G ! <'CreateVacancy'(;)> F <'CreateVacancy'(;)> F <'CreateVacancy'(;)> true))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": " (! F <'CalculateDFE2AS'(;)> true) | (!(F <'CreateVacancy'(;)> (F <'CalculateDFE2AS'(;)> true)))"
+    },
+    {
+      "constraintid": "SLTLx",
+      "formula": "(! F <'CalculateDFE2AS'(;)> true) | ((F <'CreateAntisite'(;)> <'CreateAntisite'(;)> true) & (G ! <'CreateAntisite'(;)> F <'CreateAntisite'(;)> F <'CreateAntisite'(;)> true))"
     },
     {
       "constraintid": "itn_m",

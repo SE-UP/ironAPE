@@ -4,7 +4,7 @@ cwlVersion: v1.2
 class: Workflow
 
 label: WorkflowNo_1
-doc: A workflow including the tool(s) create_project, create_structure_bulk, create_vacancy_Al, relax_structure, calculate_defect_formation_energy, calc_defect_concentration.
+doc: A workflow including the tool(s) create_project, create_structure_bulk, create_vacancy_Al, get_chemical_potential, relax_structure, calculate_vacancy_formation_energy, calc_defect_concentration.
 
 inputs:
   input_1:
@@ -26,24 +26,30 @@ steps:
     in:
       create_vacancy_Al_in_1: create_structure_bulk_02/create_structure_bulk_out_1
     out: [create_vacancy_Al_out_1]
-  relax_structure_04:
+  get_chemical_potential_04:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#get_chemical_potential.cwl 
+    in:
+      get_chemical_potential_in_1: input_1
+    out: [get_chemical_potential_out_1]
+  relax_structure_05:
     run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#relax_structure.cwl 
     in:
       relax_structure_in_1: create_vacancy_Al_03/create_vacancy_Al_out_1
     out: [relax_structure_out_1]
-  calculate_defect_formation_energy_05:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calculate_defect_formation_energy.cwl 
+  calculate_vacancy_formation_energy_06:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calculate_vacancy_formation_energy.cwl 
     in:
-      calculate_defect_formation_energy_in_1: relax_structure_04/relax_structure_out_1
-      calculate_defect_formation_energy_in_2: create_structure_bulk_02/create_structure_bulk_out_1
-    out: [calculate_defect_formation_energy_out_1]
-  calc_defect_concentration_06:
+      calculate_vacancy_formation_energy_in_1: create_structure_bulk_02/create_structure_bulk_out_1
+      calculate_vacancy_formation_energy_in_2: relax_structure_05/relax_structure_out_1
+    out: [calculate_vacancy_formation_energy_out_1]
+  calc_defect_concentration_07:
     run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calc_defect_concentration.cwl 
     in:
-      calc_defect_concentration_in_1: calculate_defect_formation_energy_05/calculate_defect_formation_energy_out_1
+      calc_defect_concentration_in_1: calculate_vacancy_formation_energy_06/calculate_vacancy_formation_energy_out_1
+      calc_defect_concentration_in_2: get_chemical_potential_04/get_chemical_potential_out_1
     out: [calc_defect_concentration_out_1]
 outputs:
   output_1:
     type: File
     format: "unknown"
-    outputSource: calc_defect_concentration_06/calc_defect_concentration_out_1
+    outputSource: calc_defect_concentration_07/calc_defect_concentration_out_1

@@ -16,6 +16,7 @@ structure = pr.create.structure.ase.bulk(Material, cubic=True)
 vacancy_structure = structure.copy()
 del vacancy_structure[1]
 
+"Error. Tool 'get_chemical_potential' is missing the execution code."
 # Relax Structure
 relax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')
 relax_job.structure = vacancy_structure
@@ -36,4 +37,4 @@ print(E_vf)
 EOF
 
 "Error. Tool 'calc_defect_concentration' is missing the execution code."
-echo "1. output is: $node-1572681248"
+echo "1. output is: $node-1571757727"
