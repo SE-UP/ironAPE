@@ -2,6 +2,7 @@
   "constraints": [
     {
       "constraintid": "SLTLx",
+      "description": "We have to use 'CreateProject' as the first tool and can not use it subsequently",
       "formula": "Exists (?x) (<'CreateProject'(;?x)> (!F Exists (?y) (<'CreateProject'(;?y)> true)))"
     },
     {
