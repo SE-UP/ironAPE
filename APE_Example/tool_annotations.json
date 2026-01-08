@@ -285,6 +285,58 @@
         "implementation": { }
       },
       {
+        "label": "calculate_dfe_1Vac_AB",
+        "id": "calculate_dfe_1Vac_AB",
+        "taxonomyOperations": ["CalculateDFE1VacAB"],
+        "inputs": [
+          { "Type": ["Structure"] },
+          { "Type": ["Structure"] }
+        ],
+        "outputs": [
+          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+        ],
+        "implementation": { }
+      },
+      {
+        "label": "calculate_dfe_1AS_AB",
+        "id": "calculate_dfe_1AS_AB",
+        "taxonomyOperations": ["CalculateDFE1ASAB"],
+        "inputs": [
+          { "Type": ["Structure"] },
+          { "Type": ["Structure"] }
+        ],
+        "outputs": [
+          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+        ],
+        "implementation": { }
+      },
+      {
+        "label": "calculate_dfe_1AS_1Vac_A",
+        "id": "calculate_dfe_1AS_1Vac_A",
+        "taxonomyOperations": ["CalculateDFE1ASA1VacA"],
+        "inputs": [
+          { "Type": ["Structure"] },
+          { "Type": ["Structure"] }
+        ],
+        "outputs": [
+          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+        ],
+        "implementation": { }
+      },
+      {
+        "label": "calculate_dfe_1AS_1Vac_AB",
+        "id": "calculate_dfe_1AS_1Vac_AB",
+        "taxonomyOperations": ["CalculateDFE1ASA1VacB"],
+        "inputs": [
+          { "Type": ["Structure"] },
+          { "Type": ["Structure"] }
+        ],
+        "outputs": [
+          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+        ],
+        "implementation": { }
+      },
+      {
         "label": "calc_defect_concentration",
         "id": "calc_defect_concentration",
         "taxonomyOperations": ["CalculateDefectConcentration"],

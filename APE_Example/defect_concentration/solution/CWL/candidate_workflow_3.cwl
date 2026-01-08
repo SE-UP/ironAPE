@@ -4,7 +4,7 @@ cwlVersion: v1.2
 class: Workflow
 
 label: WorkflowNo_2
-doc: A workflow including the tool(s) create_project, create_structure_bulk, create_antisite_Fe, relax_structure, get_chemical_potential, calculate_antisite_formation_energy, calc_defect_concentration.
+doc: A workflow including the tool(s) create_project, create_structure_bulk, create_antisite_Al, create_vacancy_Fe, relax_structure, get_chemical_potential, calculate_dfe_1AS_1Vac_AB, calc_defect_concentration.
 
 inputs:
   input_1:
@@ -21,35 +21,40 @@ steps:
       create_structure_bulk_in_1: create_project_01/create_project_out_1
       create_structure_bulk_in_2: input_1
     out: [create_structure_bulk_out_1]
-  create_antisite_Fe_03:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_antisite_Fe.cwl 
+  create_antisite_Al_03:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_antisite_Al.cwl 
     in:
-      create_antisite_Fe_in_1: create_structure_bulk_02/create_structure_bulk_out_1
-    out: [create_antisite_Fe_out_1]
-  relax_structure_04:
+      create_antisite_Al_in_1: create_structure_bulk_02/create_structure_bulk_out_1
+    out: [create_antisite_Al_out_1]
+  create_vacancy_Fe_04:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_vacancy_Fe.cwl 
+    in:
+      create_vacancy_Fe_in_1: create_antisite_Al_03/create_antisite_Al_out_1
+    out: [create_vacancy_Fe_out_1]
+  relax_structure_05:
     run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#relax_structure.cwl 
     in:
-      relax_structure_in_1: create_antisite_Fe_03/create_antisite_Fe_out_1
+      relax_structure_in_1: create_vacancy_Fe_04/create_vacancy_Fe_out_1
     out: [relax_structure_out_1]
-  get_chemical_potential_05:
+  get_chemical_potential_06:
     run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#get_chemical_potential.cwl 
     in:
       get_chemical_potential_in_1: input_1
     out: [get_chemical_potential_out_1]
-  calculate_antisite_formation_energy_06:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calculate_antisite_formation_energy.cwl 
+  calculate_dfe_1AS_1Vac_AB_07:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calculate_dfe_1AS_1Vac_AB.cwl 
     in:
-      calculate_antisite_formation_energy_in_1: create_structure_bulk_02/create_structure_bulk_out_1
-      calculate_antisite_formation_energy_in_2: relax_structure_04/relax_structure_out_1
-    out: [calculate_antisite_formation_energy_out_1]
-  calc_defect_concentration_07:
+      calculate_dfe_1AS_1Vac_AB_in_1: create_structure_bulk_02/create_structure_bulk_out_1
+      calculate_dfe_1AS_1Vac_AB_in_2: relax_structure_05/relax_structure_out_1
+    out: [calculate_dfe_1AS_1Vac_AB_out_1]
+  calc_defect_concentration_08:
     run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calc_defect_concentration.cwl 
     in:
-      calc_defect_concentration_in_1: calculate_antisite_formation_energy_06/calculate_antisite_formation_energy_out_1
-      calc_defect_concentration_in_2: get_chemical_potential_05/get_chemical_potential_out_1
+      calc_defect_concentration_in_1: calculate_dfe_1AS_1Vac_AB_07/calculate_dfe_1AS_1Vac_AB_out_1
+      calc_defect_concentration_in_2: get_chemical_potential_06/get_chemical_potential_out_1
     out: [calc_defect_concentration_out_1]
 outputs:
   output_1:
     type: File
     format: "unknown"
-    outputSource: calc_defect_concentration_07/calc_defect_concentration_out_1
+    outputSource: calc_defect_concentration_08/calc_defect_concentration_out_1
