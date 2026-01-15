@@ -1,0 +1,43 @@
+@prefix iao: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sns: <http://pyiron.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sns:__main__-get_kinetic_energy-not_defined a iao:0000591 ;
+    rdfs:label "get_kinetic_energy" ;
+    iao:0000136 <http://example.org/getKineticEnergy> ;
+    iao:0000235 [ a iao:0020000 ;
+            rdf:value "72673be434ed6412b2b57ff8a33a40c77c62fa867eedbec038753a8d390ee565" ] ;
+    sns:has_parameter_specification [ a sns:input_specification ;
+            rdfs:label "mass" ;
+            iao:0000136 <http://example.org/Mass> ;
+            sns:has_parameter_position 0 ],
+        [ a sns:input_specification ;
+            rdfs:label "velocity" ;
+            iao:0000136 <http://example.org/Velocity> ;
+            sns:has_parameter_position 1 ],
+        [ a sns:output_specification ;
+            rdfs:label "output_0" ;
+            iao:0000136 <http://example.org/KineticEnergy> ;
+            sns:has_parameter_position 0 ] .
+
+sns:__main__-get_speed-not_defined a iao:0000591 ;
+    rdfs:label "get_speed" ;
+    iao:0000235 [ a iao:0000300 ;
+            rdf:value "some random docstring" ],
+        [ a iao:0020000 ;
+            rdf:value "04108ab598a833ba8b63e1938b2ca2982a4d22b364d6e993f113e36561f6c36b" ] ;
+    sns:has_parameter_specification [ a sns:input_specification ;
+            rdfs:label "distance" ;
+            iao:0000136 <http://example.org/Distance> ;
+            sns:has_parameter_position 0 ],
+        [ a sns:input_specification ;
+            rdfs:label "time" ;
+            iao:0000136 <http://example.org/time> ;
+            sns:has_parameter_position 1 ],
+        [ a sns:output_specification ;
+            rdfs:label "output_0" ;
+            iao:0000136 <http://example.org/Velocity> ;
+            sns:has_parameter_position 0 ] .
+
