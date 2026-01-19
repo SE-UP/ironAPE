@@ -137,12 +137,6 @@
       "formula": " (! F <'CalculateDFE1ASA1VacB'(;)> true) | (!(F <'CreateAntisiteAl'(;)> <'CreateVacancyAl'(;)> true) & !(F <'CreateAntisiteFe'(;)> <'CreateVacancyFe'(;)> true) & !(F <'CreateVacancyAl'(;)> <'CreateAntisiteAl'(;)> true) & !(F <'CreateVacancyFe'(;)> <'CreateAntisiteFe'(;)> true))"
     },
     {
-      "constraintid": "use_m",
-      "parameters": [
-        { "Tool" : ["CalculateDFE1ASA1VacB"]}
-      ]
-    },
-    {
       "constraintid": "itn_m",
       "parameters": [
         { "Tool" : ["RelaxStructure"]},

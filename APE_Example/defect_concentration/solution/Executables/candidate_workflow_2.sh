@@ -10,14 +10,9 @@ python - << EOF
 from pyiron.project import Project
 pr = Project('example_project')
 
-"Error. Tool 'get_chemical_potential' is missing the execution code."
 structure = pr.create.structure.ase.bulk(Material, cubic=True)
 
-"Error. Tool 'create_antisite_Al' is missing the execution code."
-# Create Vacancy Structure
-vacancy_structure = structure.copy()
-del vacancy_structure[1]
-
+"Error. Tool 'create_antisite_Fe' is missing the execution code."
 # Relax Structure
 relax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')
 relax_job.structure = vacancy_structure
@@ -26,6 +21,7 @@ relax_job.calc_minimize(pressure=0.0)
 relax_job.run()
 relax_structure = relax_job.get_final_structure()
 
-"Error. Tool 'calculate_dfe_1AS_1Vac_AB' is missing the execution code."
+"Error. Tool 'get_chemical_potential' is missing the execution code."
+"Error. Tool 'calculate_antisite_formation_energy' is missing the execution code."
 "Error. Tool 'calc_defect_concentration' is missing the execution code."
-echo "1. output is: $node-1570834206"
+echo "1. output is: $node-1571757727"
