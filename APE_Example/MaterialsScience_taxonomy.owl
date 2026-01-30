@@ -61,6 +61,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/materials_science#CalcBulkEnergy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalcBulkEnergy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/materials_science#CalcMD -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalcMD">

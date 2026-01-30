@@ -120,6 +120,19 @@
         "implementation": { "code": "# Relax Structure\nrelax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')\nrelax_job.structure = vacancy_structure\nrelax_job.potential = relax_job.list_potentials()[0]\nrelax_job.calc_minimize(pressure=0.0)\nrelax_job.run()\nrelax_structure = relax_job.get_final_structure()\n" }
       },
       {
+        "label": "calc_bulk_energy",
+        "id": "calc_bulk_energy",
+        "taxonomyOperations": ["CalcBulkEnergy"],
+        "inputs": [
+          { "Type": ["ChemicalPotential"] },
+          { "Type": ["Material"] }
+        ],
+        "outputs": [
+          { "Type": ["ChemicalPotential"], "Format": ["Float"] }
+        ],
+        "implementation": { "code": "" }
+      },
+      {
         "label": "create_job_lammps",
         "id": "create_job_lammps",
         "taxonomyOperations": ["CreateJobLammps"],

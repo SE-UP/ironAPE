@@ -10,6 +10,7 @@ python - << EOF
 from pyiron.project import Project
 pr = Project('example_project')
 
+"Error. Tool 'get_chemical_potential' is missing the execution code."
 structure = pr.create.structure.ase.bulk(Material, cubic=True)
 
 # Create Vacancy Structure
@@ -24,7 +25,6 @@ relax_job.calc_minimize(pressure=0.0)
 relax_job.run()
 relax_structure = relax_job.get_final_structure()
 
-"Error. Tool 'get_chemical_potential' is missing the execution code."
 # Calculate Vacancy Formation Energy
 bulk_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_bulk', delete_existing_job=True)
 bulk_job.structure = structure
