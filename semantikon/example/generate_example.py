@@ -3,7 +3,6 @@ from typing import Annotated
 from semantikon import ontology as onto
 from semantikon.metadata import meta
 
-
 EX = Namespace("http://example.org/")
 
 
