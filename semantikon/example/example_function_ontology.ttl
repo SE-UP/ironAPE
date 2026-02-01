@@ -1,43 +1,71 @@
+@prefix bfo: <http://purl.obolibrary.org/obo/BFO_> .
 @prefix iao: <http://purl.obolibrary.org/obo/IAO_> .
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix pmdco: <https://w3id.org/pmd/co/PMD_> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sns: <http://pyiron.org/ontology/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-sns:__main__-get_kinetic_energy-not_defined a iao:0000591 ;
-    rdfs:label "get_kinetic_energy" ;
-    iao:0000136 <http://example.org/getKineticEnergy> ;
+sns:__main__-get_kinetic_energy-not_defined a pmdco:0000010 ;
+    bfo:0000051 sns:__main__-get_kinetic_energy-not_defined_input_mass,
+        sns:__main__-get_kinetic_energy-not_defined_input_velocity,
+        sns:__main__-get_kinetic_energy-not_defined_output_output_0 ;
+    iao:0000136 [ a <http://example.org/getKineticEnergy> ] ;
     iao:0000235 [ a iao:0020000 ;
-            rdf:value "72673be434ed6412b2b57ff8a33a40c77c62fa867eedbec038753a8d390ee565" ] ;
-    sns:has_parameter_specification [ a sns:input_specification ;
-            rdfs:label "mass" ;
-            iao:0000136 <http://example.org/Mass> ;
-            sns:has_parameter_position 0 ],
-        [ a sns:input_specification ;
-            rdfs:label "velocity" ;
-            iao:0000136 <http://example.org/Velocity> ;
-            sns:has_parameter_position 1 ],
-        [ a sns:output_specification ;
-            rdfs:label "output_0" ;
-            iao:0000136 <http://example.org/KineticEnergy> ;
-            sns:has_parameter_position 0 ] .
+            pmdco:0000006 "72673be434ed6412b2b57ff8a33a40c77c62fa867eedbec038753a8d390ee565" ],
+        sns:__main__,
+        sns:get_kinetic_energy_function_name .
 
-sns:__main__-get_speed-not_defined a iao:0000591 ;
-    rdfs:label "get_speed" ;
-    iao:0000235 [ a iao:0000300 ;
-            rdf:value "some random docstring" ],
-        [ a iao:0020000 ;
-            rdf:value "04108ab598a833ba8b63e1938b2ca2982a4d22b364d6e993f113e36561f6c36b" ] ;
-    sns:has_parameter_specification [ a sns:input_specification ;
-            rdfs:label "distance" ;
-            iao:0000136 <http://example.org/Distance> ;
-            sns:has_parameter_position 0 ],
-        [ a sns:input_specification ;
-            rdfs:label "time" ;
-            iao:0000136 <http://example.org/time> ;
-            sns:has_parameter_position 1 ],
-        [ a sns:output_specification ;
-            rdfs:label "output_0" ;
-            iao:0000136 <http://example.org/Velocity> ;
-            sns:has_parameter_position 0 ] .
+sns:__main__-get_speed-not_defined_docstring a iao:0000300 ;
+    iao:0000136 sns:__main__-get_speed-not_defined ;
+    pmdco:0000006 "some random docstring" .
+
+sns:__main__-get_kinetic_energy-not_defined_input_mass a pmdco:0000014 ;
+    rdfs:label "mass" ;
+    iao:0000136 [ a <http://example.org/Mass> ] ;
+    pmdco:0001857 0 .
+
+sns:__main__-get_kinetic_energy-not_defined_input_velocity a pmdco:0000014 ;
+    rdfs:label "velocity" ;
+    iao:0000136 [ a <http://example.org/Velocity> ] ;
+    pmdco:0001857 1 .
+
+sns:__main__-get_kinetic_energy-not_defined_output_output_0 a pmdco:0000015 ;
+    rdfs:label "output_0" ;
+    iao:0000136 [ a <http://example.org/KineticEnergy> ] ;
+    pmdco:0001857 0 .
+
+sns:__main__-get_speed-not_defined a pmdco:0000010 ;
+    bfo:0000051 sns:__main__-get_speed-not_defined_input_distance,
+        sns:__main__-get_speed-not_defined_input_time,
+        sns:__main__-get_speed-not_defined_output_output_0 ;
+    iao:0000235 [ a iao:0020000 ;
+            pmdco:0000006 "04108ab598a833ba8b63e1938b2ca2982a4d22b364d6e993f113e36561f6c36b" ],
+        sns:__main__,
+        sns:get_speed_function_name .
+
+sns:__main__-get_speed-not_defined_input_distance a pmdco:0000014 ;
+    rdfs:label "distance" ;
+    iao:0000136 [ a <http://example.org/Distance> ] ;
+    pmdco:0001857 0 .
+
+sns:__main__-get_speed-not_defined_input_time a pmdco:0000014 ;
+    rdfs:label "time" ;
+    iao:0000136 [ a <http://example.org/time> ] ;
+    pmdco:0001857 1 .
+
+sns:__main__-get_speed-not_defined_output_output_0 a pmdco:0000015 ;
+    rdfs:label "output_0" ;
+    iao:0000136 [ a <http://example.org/Velocity> ] ;
+    pmdco:0001857 0 .
+
+sns:get_kinetic_energy_function_name a pmdco:0000100 ;
+    rdfs:label "Function name 'get_kinetic_energy'" ;
+    pmdco:0000006 "get_kinetic_energy" .
+
+sns:get_speed_function_name a pmdco:0000100 ;
+    rdfs:label "Function name 'get_speed'" ;
+    pmdco:0000006 "get_speed" .
+
+sns:__main__ a pmdco:0000101 ;
+    pmdco:0000006 "__main__" .
 
