@@ -1,9 +1,19 @@
 @prefix bfo: <http://purl.obolibrary.org/obo/BFO_> .
 @prefix iao: <http://purl.obolibrary.org/obo/IAO_> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix pmdco: <https://w3id.org/pmd/co/PMD_> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sns: <http://pyiron.org/ontology/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+sns:__main__-dye-not_defined a pmdco:0000010 ;
+    bfo:0000051 sns:__main__-dye-not_defined_input_clothes,
+        sns:__main__-dye-not_defined_input_color,
+        sns:__main__-dye-not_defined_output_output_0 ;
+    iao:0000235 [ a iao:0020000 ;
+            pmdco:0000006 "e6c42ab83ea8be6dfcce9bbce9e5ecc1e47cc5eb4abd445d3d624b502817ea44" ],
+        sns:__main__,
+        sns:dye_function_name .
 
 sns:__main__-get_kinetic_energy-not_defined a pmdco:0000010 ;
     bfo:0000051 sns:__main__-get_kinetic_energy-not_defined_input_mass,
@@ -18,6 +28,35 @@ sns:__main__-get_kinetic_energy-not_defined a pmdco:0000010 ;
 sns:__main__-get_speed-not_defined_docstring a iao:0000300 ;
     iao:0000136 sns:__main__-get_speed-not_defined ;
     pmdco:0000006 "some random docstring" .
+
+sns:__main__-sell-not_defined a pmdco:0000010 ;
+    bfo:0000051 sns:__main__-sell-not_defined_input_clothes,
+        sns:__main__-sell-not_defined_output_output_0 ;
+    iao:0000235 [ a iao:0020000 ;
+            pmdco:0000006 "6caf1dcc93c254840f107c48cc25753ba7575f2fc7e11e6484375fb1422b8074" ],
+        sns:__main__,
+        sns:sell_function_name .
+
+sns:__main__-wash-not_defined a pmdco:0000010 ;
+    bfo:0000051 sns:__main__-wash-not_defined_input_clothes,
+        sns:__main__-wash-not_defined_output_output_0 ;
+    iao:0000235 [ a iao:0020000 ;
+            pmdco:0000006 "04a628c845c0d41d8cc4980021f1af531e56133295a5c07ee9fdd88131a4c4d3" ],
+        sns:__main__,
+        sns:wash_function_name .
+
+sns:__main__-dye-not_defined_input_clothes a pmdco:0000014 ;
+    rdfs:label "clothes" ;
+    pmdco:0001857 0 .
+
+sns:__main__-dye-not_defined_input_color a pmdco:0000014 ;
+    rdfs:label "color" ;
+    pmdco:0001857 1 ;
+    pmdco:0001877 "blue" .
+
+sns:__main__-dye-not_defined_output_output_0 a pmdco:0000015 ;
+    rdfs:label "output_0" ;
+    pmdco:0001857 0 .
 
 sns:__main__-get_kinetic_energy-not_defined_input_mass a pmdco:0000014 ;
     rdfs:label "mass" ;
@@ -58,6 +97,32 @@ sns:__main__-get_speed-not_defined_output_output_0 a pmdco:0000015 ;
     iao:0000136 [ a <http://example.org/Velocity> ] ;
     pmdco:0001857 0 .
 
+sns:__main__-sell-not_defined_input_clothes a pmdco:0000014 ;
+    rdfs:label "clothes" ;
+    sns:has_constraint [ a owl:Restriction ;
+            owl:onProperty <http://example.org/hasProperty> ;
+            owl:someValuesFrom <http://example.org/Color> ],
+        [ a owl:Restriction ;
+            owl:onProperty <http://example.org/hasProperty> ;
+            owl:someValuesFrom <http://example.org/Cleaned> ] ;
+    pmdco:0001857 0 .
+
+sns:__main__-sell-not_defined_output_output_0 a pmdco:0000015 ;
+    rdfs:label "output_0" ;
+    pmdco:0001857 0 .
+
+sns:__main__-wash-not_defined_input_clothes a pmdco:0000014 ;
+    rdfs:label "clothes" ;
+    pmdco:0001857 0 .
+
+sns:__main__-wash-not_defined_output_output_0 a pmdco:0000015 ;
+    rdfs:label "output_0" ;
+    pmdco:0001857 0 .
+
+sns:dye_function_name a pmdco:0000100 ;
+    rdfs:label "Function name 'dye'" ;
+    pmdco:0000006 "dye" .
+
 sns:get_kinetic_energy_function_name a pmdco:0000100 ;
     rdfs:label "Function name 'get_kinetic_energy'" ;
     pmdco:0000006 "get_kinetic_energy" .
@@ -65,6 +130,14 @@ sns:get_kinetic_energy_function_name a pmdco:0000100 ;
 sns:get_speed_function_name a pmdco:0000100 ;
     rdfs:label "Function name 'get_speed'" ;
     pmdco:0000006 "get_speed" .
+
+sns:sell_function_name a pmdco:0000100 ;
+    rdfs:label "Function name 'sell'" ;
+    pmdco:0000006 "sell" .
+
+sns:wash_function_name a pmdco:0000100 ;
+    rdfs:label "Function name 'wash'" ;
+    pmdco:0000006 "wash" .
 
 sns:__main__ a pmdco:0000101 ;
     pmdco:0000006 "__main__" .

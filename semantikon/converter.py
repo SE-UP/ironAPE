@@ -1,5 +1,5 @@
 import json
-from rdflib import RDF, RDFS, BNode, Graph
+from rdflib import RDF, RDFS, OWL, BNode, Graph
 from semantikon import ontology as onto
 
 node_query = """
@@ -21,7 +21,7 @@ SELECT ?software ?label ?identifier ?uri WHERE {
 }"""
 
 
-def knowledge_graph_to_ape(graph):
+def knowledge_graph_to_ape(graph, ontology: Graph | None = None):
     all_data = []
     for entry in graph.query(node_query):
         data = {
