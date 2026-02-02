@@ -4,7 +4,6 @@ from semantikon import ontology as onto
 
 node_query = """
 PREFIX pmd: <https://w3id.org/pmd/co/PMD_>
-PREFIX ex: <http://example.org/>
 
 SELECT ?software ?label ?identifier ?uri WHERE {
     ?software a pmd:0000010 .
@@ -21,16 +20,23 @@ SELECT ?software ?label ?identifier ?uri WHERE {
 }"""
 
 
-def knowledge_graph_to_ape(graph, ontology: Graph | None = None):
+def knowledge_graph_to_ape(graph: Graph) -> list:
+    g_onto = Graph()
+    g_onto.add((onto.BASE["Tool"], RDF.type, OWL.Class))
+    g_onto.add((onto.BASE["Type"], RDF.type, OWL.Class))
+    g_onto.add((onto.BASE["Format"], RDF.type, OWL.Class))
     all_data = []
     for entry in graph.query(node_query):
+        uri = onto.BASE[entry[1].toPython()] if entry[3] is None else entry[3]
         data = {
             "label": entry[1].toPython(),
             "id": entry[2].toPython(),
             "taxonomyOperations": (
-                [BNode(entry[1].toPython())] if entry[3] is None else [entry[3]]
+                [uri.toPython()]
             ),
         }
+        g_onto.add((uri, RDFS.subClassOf, onto.BASE["Tool"]))
+        g_onto.add((uri, RDF.type, OWL.Class))
         software = entry[0]
         no_uri = False
         inputs = []
@@ -47,7 +53,7 @@ def knowledge_graph_to_ape(graph, ontology: Graph | None = None):
                     list(graph.objects(bnode, onto.SNS.has_parameter_position))[
                         0
                     ].toPython(),
-                    is_about_class.toPython(),
+                    is_about_class,
                 ]
                 if is_input:
                     inputs.append(io)
@@ -58,17 +64,26 @@ def knowledge_graph_to_ape(graph, ontology: Graph | None = None):
                 break
         if not no_uri:
             data["inputs"] = [
-                {"Type": [x]} for _, x in sorted(inputs, key=lambda pair: pair[0])
+                {"Type": [x.toPython()]} for _, x in sorted(inputs, key=lambda pair: pair[0])
             ]
             data["outputs"] = [
-                {"Type": [x]} for _, x in sorted(outputs, key=lambda pair: pair[0])
+                {"Type": [x.toPython()]} for _, x in sorted(outputs, key=lambda pair: pair[0])
             ]
+            for inp in inputs:
+                g_onto.add((inp[1], RDFS.subClassOf, onto.BASE["Type"]))
+                g_onto.add((inp[1], RDF.type, OWL.Class))
+            for out in outputs:
+                g_onto.add((out[1], RDFS.subClassOf, onto.BASE["Type"]))
+                g_onto.add((out[1], RDF.type, OWL.Class))
             all_data.append(data)
-    return all_data
+    return all_data, g_onto
 
 
-graph = Graph()
-graph.parse("example/example_function_ontology.ttl")
-all_data = knowledge_graph_to_ape(graph)
-with open("example/tool_annotations.json", "w") as f:
-    json.dump({"functions": all_data}, f, indent=4)
+if __name__ == "__main__":
+    graph = Graph()
+    graph.parse("example/example_function_ontology.ttl")
+    all_data, g_onto = knowledge_graph_to_ape(graph)
+    with open("example/tool_annotations.json", "w") as f:
+        json.dump({"functions": all_data}, f, indent=4)
+    with open("example/taxonomy.owl", "w") as f:
+        f.write(g_onto.serialize(format="xml"))

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+>
+  <rdf:Description rdf:about="http://example.org/Mass">
+    <rdfs:subClassOf rdf:resource="http://pyiron.org/ontology/Type"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://pyiron.org/ontology/sell">
+    <rdfs:subClassOf rdf:resource="http://pyiron.org/ontology/Tool"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/getKineticEnergy">
+    <rdfs:subClassOf rdf:resource="http://pyiron.org/ontology/Tool"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://pyiron.org/ontology/Type">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://pyiron.org/ontology/dye">
+    <rdfs:subClassOf rdf:resource="http://pyiron.org/ontology/Tool"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://pyiron.org/ontology/get_speed">
+    <rdfs:subClassOf rdf:resource="http://pyiron.org/ontology/Tool"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/time">
+    <rdfs:subClassOf rdf:resource="http://pyiron.org/ontology/Type"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://pyiron.org/ontology/Format">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://pyiron.org/ontology/Tool">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://pyiron.org/ontology/wash">
+    <rdfs:subClassOf rdf:resource="http://pyiron.org/ontology/Tool"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/KineticEnergy">
+    <rdfs:subClassOf rdf:resource="http://pyiron.org/ontology/Type"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Velocity">
+    <rdfs:subClassOf rdf:resource="http://pyiron.org/ontology/Type"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Distance">
+    <rdfs:subClassOf rdf:resource="http://pyiron.org/ontology/Type"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </rdf:Description>
+</rdf:RDF>
