@@ -30,7 +30,7 @@
             "label": "get_speed",
             "id": "04108ab598a833ba8b63e1938b2ca2982a4d22b364d6e993f113e36561f6c36b",
             "taxonomyOperations": [
-                "get_speed"
+                "http://pyiron.org/ontology/get_speed"
             ],
             "inputs": [
                 {
