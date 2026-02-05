@@ -1,0 +1,30 @@
+{
+  "ontology_path": "./semantikon/example/taxonomy_changedPrefixes.owl",
+  "ontologyPrefixIRI": "http://www.semanticweb.org/taxonomy_changedPrefixes#",
+  "toolsTaxonomyRoot": "Tool",
+  "dataDimensionsTaxonomyRoots": [
+    "Type",
+    "Format"
+  ],
+  "tool_annotations_path": "./semantikon/example/tool_annotations_renamed.json",
+  "strict_tool_annotations": "false",
+  "constraints_path": "./semantikon/example/constraints.json",
+  "timeout_sec": "300",
+  "solutions_dir_path": "./semantikon/example/solution/",
+  "solution_length": {
+    "min": 1,
+    "max": 10
+  },
+  "solutions": "1000",
+  "number_of_execution_scripts": "3",
+  "number_of_generated_graphs": "30",
+  "number_of_cwl_files": "5",
+  "tool_seq_repeat": "false",
+  "inputs": [ { "Type": ["Distance"] }, { "Type": ["time"] }, { "Type": ["Mass"] } ],
+  "outputs": [
+    { "Type": ["KineticEnergy"] }
+  ],
+  "debug_mode": "true",
+  "use_workflow_input": "all",
+  "use_all_generated_data": "one"
+}

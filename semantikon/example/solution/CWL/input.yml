@@ -1,0 +1,12 @@
+input_1:
+  class: File
+  format: "unknown"
+  path: set_full_path_to_the_file_with_extension_here
+input_2:
+  class: File
+  format: "unknown"
+  path: set_full_path_to_the_file_with_extension_here
+input_3:
+  class: File
+  format: "unknown"
+  path: set_full_path_to_the_file_with_extension_here

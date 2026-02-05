@@ -1,0 +1,56 @@
+{
+    "functions": [
+        {
+            "label": "get_kinetic_energy",
+            "id": "72673be434ed6412b2b57ff8a33a40c77c62fa867eedbec038753a8d390ee565",
+            "taxonomyOperations": [
+                "getKineticEnergy"
+            ],
+            "inputs": [
+                {
+                    "Type": [
+                        "Mass"
+                    ]
+                },
+                {
+                    "Type": [
+                        "Velocity"
+                    ]
+                }
+            ],
+            "outputs": [
+                {
+                    "Type": [
+                        "KineticEnergy"
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "get_speed",
+            "id": "04108ab598a833ba8b63e1938b2ca2982a4d22b364d6e993f113e36561f6c36b",
+            "taxonomyOperations": [
+                "get_speed"
+            ],
+            "inputs": [
+                {
+                    "Type": [
+                        "Distance"
+                    ]
+                },
+                {
+                    "Type": [
+                        "time"
+                    ]
+                }
+            ],
+            "outputs": [
+                {
+                    "Type": [
+                        "Velocity"
+                    ]
+                }
+            ]
+        }
+    ]
+}
