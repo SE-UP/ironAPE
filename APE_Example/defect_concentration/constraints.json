@@ -33,8 +33,8 @@
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CreateAntisite', we have to use 'CalcBulkEnergy'",
-      "formula": " (! F <'CreateAntisite'(;)> true) | (F <'CalcBulkEnergy'(;)> true))"
+      "description": "If we use the tool 'CreateAntisite', we have to use 'CalcChemicalPotentialB'",
+      "formula": " (! F <'CreateAntisite'(;)> true) | (F <'CalcChemicalPotentialB'(;)> true))"
     },
     {
       "constraintid": "SLTLx",
@@ -186,8 +186,8 @@
     {
       "constraintid": "itn_m",
       "parameters": [
-        { "Tool" : ["CalcBulkEnergy"]},
-        { "Tool" : ["CalcBulkEnergy"]}
+        { "Tool" : ["CalcChemicalPotentialB"]},
+        { "Tool" : ["CalcChemicalPotentialB"]}
       ]
     },
     {

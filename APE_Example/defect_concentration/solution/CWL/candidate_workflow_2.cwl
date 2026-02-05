@@ -4,7 +4,7 @@ cwlVersion: v1.2
 class: Workflow
 
 label: WorkflowNo_1
-doc: A workflow including the tool(s) create_project, get_chemical_potential, create_structure_bulk, create_vacancy_Fe, relax_structure, calculate_vacancy_formation_energy, calc_defect_concentration.
+doc: A workflow including the tool(s) create_project, create_structure_bulk, create_vacancy_Al, calc_chemical_potential_A, create_antisite_Fe, relax_structure, calc_chemical_potential_B, calculate_dfe_1AS_1Vac_AB, calc_defect_concentration.
 
 inputs:
   input_1:
@@ -15,41 +15,52 @@ steps:
     run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_project.cwl 
     in: []
     out: [create_project_out_1]
-  get_chemical_potential_02:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#get_chemical_potential.cwl 
-    in:
-      get_chemical_potential_in_1: input_1
-    out: [get_chemical_potential_out_1]
-  create_structure_bulk_03:
+  create_structure_bulk_02:
     run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_structure_bulk.cwl 
     in:
       create_structure_bulk_in_1: create_project_01/create_project_out_1
       create_structure_bulk_in_2: input_1
     out: [create_structure_bulk_out_1]
-  create_vacancy_Fe_04:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_vacancy_Fe.cwl 
+  create_vacancy_Al_03:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_vacancy_Al.cwl 
     in:
-      create_vacancy_Fe_in_1: create_structure_bulk_03/create_structure_bulk_out_1
-    out: [create_vacancy_Fe_out_1]
-  relax_structure_05:
+      create_vacancy_Al_in_1: create_structure_bulk_02/create_structure_bulk_out_1
+    out: [create_vacancy_Al_out_1]
+  calc_chemical_potential_A_04:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calc_chemical_potential_A.cwl 
+    in:
+      calc_chemical_potential_A_in_1: input_1
+    out: [calc_chemical_potential_A_out_1]
+  create_antisite_Fe_05:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#create_antisite_Fe.cwl 
+    in:
+      create_antisite_Fe_in_1: create_vacancy_Al_03/create_vacancy_Al_out_1
+    out: [create_antisite_Fe_out_1]
+  relax_structure_06:
     run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#relax_structure.cwl 
     in:
-      relax_structure_in_1: create_vacancy_Fe_04/create_vacancy_Fe_out_1
+      relax_structure_in_1: create_antisite_Fe_05/create_antisite_Fe_out_1
     out: [relax_structure_out_1]
-  calculate_vacancy_formation_energy_06:
-    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calculate_vacancy_formation_energy.cwl 
+  calc_chemical_potential_B_07:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calc_chemical_potential_B.cwl 
     in:
-      calculate_vacancy_formation_energy_in_1: relax_structure_05/relax_structure_out_1
-      calculate_vacancy_formation_energy_in_2: create_structure_bulk_03/create_structure_bulk_out_1
-    out: [calculate_vacancy_formation_energy_out_1]
-  calc_defect_concentration_07:
+      calc_chemical_potential_B_in_1: calc_chemical_potential_A_04/calc_chemical_potential_A_out_1
+      calc_chemical_potential_B_in_2: input_1
+    out: [calc_chemical_potential_B_out_1]
+  calculate_dfe_1AS_1Vac_AB_08:
+    run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calculate_dfe_1AS_1Vac_AB.cwl 
+    in:
+      calculate_dfe_1AS_1Vac_AB_in_1: relax_structure_06/relax_structure_out_1
+      calculate_dfe_1AS_1Vac_AB_in_2: create_structure_bulk_02/create_structure_bulk_out_1
+    out: [calculate_dfe_1AS_1Vac_AB_out_1]
+  calc_defect_concentration_09:
     run: add-path-to-the-implementation/http://www.semanticweb.org/materials_science#calc_defect_concentration.cwl 
     in:
-      calc_defect_concentration_in_1: calculate_vacancy_formation_energy_06/calculate_vacancy_formation_energy_out_1
-      calc_defect_concentration_in_2: get_chemical_potential_02/get_chemical_potential_out_1
+      calc_defect_concentration_in_1: calculate_dfe_1AS_1Vac_AB_08/calculate_dfe_1AS_1Vac_AB_out_1
+      calc_defect_concentration_in_2: calc_chemical_potential_B_07/calc_chemical_potential_B_out_1
     out: [calc_defect_concentration_out_1]
 outputs:
   output_1:
     type: File
     format: "unknown"
-    outputSource: calc_defect_concentration_07/calc_defect_concentration_out_1
+    outputSource: calc_defect_concentration_09/calc_defect_concentration_out_1

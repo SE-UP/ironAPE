@@ -61,9 +61,17 @@
     
 
 
-    <!-- http://www.semanticweb.org/materials_science#CalcBulkEnergy -->
+    <!-- http://www.semanticweb.org/materials_science#CalcChemicalPotentialA -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalcBulkEnergy">
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalcChemicalPotentialA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalcChemicalPotentialB -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalcChemicalPotentialB">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
     </owl:Class>
     
@@ -398,14 +406,6 @@
     <!-- http://www.semanticweb.org/materials_science#GetBulkModulus -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#GetBulkModulus">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#GetChemicalPotential -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#GetChemicalPotential">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
     </owl:Class>
     
