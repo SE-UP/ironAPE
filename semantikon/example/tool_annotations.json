@@ -1,54 +1,56 @@
-[
-    {
-        "label": "get_kinetic_energy",
-        "id": "72673be434ed6412b2b57ff8a33a40c77c62fa867eedbec038753a8d390ee565",
-        "taxonomyOperations": [
-            "http://example.org/getKineticEnergy"
-        ],
-        "inputs": [
-            {
-                "Type": [
-                    "http://example.org/Mass"
-                ]
-            },
-            {
-                "Type": [
-                    "http://example.org/Velocity"
-                ]
-            }
-        ],
-        "outputs": [
-            {
-                "Type": [
-                    "http://example.org/KineticEnergy"
-                ]
-            }
-        ]
-    },
-    {
-        "label": "get_speed",
-        "id": "04108ab598a833ba8b63e1938b2ca2982a4d22b364d6e993f113e36561f6c36b",
-        "taxonomyOperations": [
-            "get_kinetic_energy"
-        ],
-        "inputs": [
-            {
-                "Type": [
-                    "http://example.org/Distance"
-                ]
-            },
-            {
-                "Type": [
-                    "http://example.org/time"
-                ]
-            }
-        ],
-        "outputs": [
-            {
-                "Type": [
-                    "http://example.org/Velocity"
-                ]
-            }
-        ]
-    }
-]
+{
+    "functions": [
+        {
+            "label": "get_kinetic_energy",
+            "id": "72673be434ed6412b2b57ff8a33a40c77c62fa867eedbec038753a8d390ee565",
+            "taxonomyOperations": [
+                "http://example.org/getKineticEnergy"
+            ],
+            "inputs": [
+                {
+                    "Type": [
+                        "http://example.org/Mass"
+                    ]
+                },
+                {
+                    "Type": [
+                        "http://example.org/Velocity"
+                    ]
+                }
+            ],
+            "outputs": [
+                {
+                    "Type": [
+                        "http://example.org/KineticEnergy"
+                    ]
+                }
+            ]
+        },
+        {
+            "label": "get_speed",
+            "id": "04108ab598a833ba8b63e1938b2ca2982a4d22b364d6e993f113e36561f6c36b",
+            "taxonomyOperations": [
+                "http://pyiron.org/ontology/get_speed"
+            ],
+            "inputs": [
+                {
+                    "Type": [
+                        "http://example.org/Distance"
+                    ]
+                },
+                {
+                    "Type": [
+                        "http://example.org/time"
+                    ]
+                }
+            ],
+            "outputs": [
+                {
+                    "Type": [
+                        "http://example.org/Velocity"
+                    ]
+                }
+            ]
+        }
+    ]
+}
