@@ -38,143 +38,143 @@
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateVacancyFormationEnergy', we can not use the tool 'CreateAntisite' previously",
-      "formula": " (! F <'CalculateVacancyFormationEnergy'(;)> true) | (!(F <'CreateAntisite'(;)> (F <'CalculateVacancyFormationEnergy'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1Vac', we can not use the tool 'CreateAntisite' previously",
+      "formula": " (! F <'CalculateEnergy1Vac'(;)> true) | (!(F <'CreateAntisite'(;)> (F <'CalculateEnergy1Vac'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateVacancyFormationEnergy', we can not use the tool 'CreateVacancy' more than once",
-      "formula": "(! F <'CalculateVacancyFormationEnergy'(;)> true) | (G !(<'CreateVacancy'(;)> F <'CreateVacancy'(;)> true))"
+      "description": "If we use the tool 'CalculateEnergy1Vac', we can not use the tool 'CreateVacancy' more than once",
+      "formula": "(! F <'CalculateEnergy1Vac'(;)> true) | (G !(<'CreateVacancy'(;)> F <'CreateVacancy'(;)> true))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateAntisiteFormationEnergy', we can not use the tool 'CreateVacancy' previously",
-      "formula": " (! F <'CalculateAntisiteFormationEnergy'(;)> true) | (!(F <'CreateVacancy'(;)> (F <'CalculateAntisiteFormationEnergy'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1AS', we can not use the tool 'CreateVacancy' previously",
+      "formula": " (! F <'CalculateEnergy1AS'(;)> true) | (!(F <'CreateVacancy'(;)> (F <'CalculateEnergy1AS'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
       "description": "If we use the tool 'CalculateAntisiteEnergy', we can not use the tool 'CreateAntisite' more than once",
-      "formula": "(! F <'CalculateAntisiteFormationEnergy'(;)> true) | (G !(<'CreateAntisite'(;)> F <'CreateAntisite'(;)> true))"
+      "formula": "(! F <'CalculateEnergy1AS'(;)> true) | (G !(<'CreateAntisite'(;)> F <'CreateAntisite'(;)> true))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE2Vac', we can not use the tool 'CreateAntisite' previously",
-      "formula": " (! F <'CalculateDFE2Vac'(;)> true) | (!(F <'CreateAntisite'(;)> (F <'CalculateDFE2Vac'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy2Vac', we can not use the tool 'CreateAntisite' previously",
+      "formula": " (! F <'CalculateEnergy2Vac'(;)> true) | (!(F <'CreateAntisite'(;)> (F <'CalculateEnergy2Vac'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE2Vac', we have to use 'CreateVacancy' at least twice and there can be a step in between",
-      "formula": "(! F <'CalculateDFE2Vac'(;)> true) | (F (<'CreateVacancy'(;)> (X <'CreateVacancy'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy2Vac', we have to use 'CreateVacancy' at least twice and there can be a step in between",
+      "formula": "(! F <'CalculateEnergy2Vac'(;)> true) | (F (<'CreateVacancy'(;)> (X <'CreateVacancy'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE2Vac', we can not use 'CreateVacancy' more than two times",
-      "formula": "(! F <'CalculateDFE2Vac'(;)> true) | (G ! <'CreateVacancy'(;)> F <'CreateVacancy'(;)> F <'CreateVacancy'(;)> true))"
+      "description": "If we use the tool 'CalculateEnergy2Vac', we can not use 'CreateVacancy' more than two times",
+      "formula": "(! F <'CalculateEnergy2Vac'(;)> true) | (G ! <'CreateVacancy'(;)> F <'CreateVacancy'(;)> F <'CreateVacancy'(;)> true))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE2Vac', we can only use 'CreateVacancyAl' or 'CreateVacancyFe', not both",
-      "formula": "(! F <'CalculateDFE2Vac'(;)> true) | (G ((! <'CreateVacancyAl'(;)> F <'CreateVacancyFe'(;)> true) & (! <'CreateVacancyFe'(;)> F <'CreateVacancyAl'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy2Vac', we can only use 'CreateVacancyAl' or 'CreateVacancyFe', not both",
+      "formula": "(! F <'CalculateEnergy2Vac'(;)> true) | (G ((! <'CreateVacancyAl'(;)> F <'CreateVacancyFe'(;)> true) & (! <'CreateVacancyFe'(;)> F <'CreateVacancyAl'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE2AS', we can not use the tool 'CreateVacancy' previously",
-      "formula": " (! F <'CalculateDFE2AS'(;)> true) | (!(F <'CreateVacancy'(;)> (F <'CalculateDFE2AS'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy2AS', we can not use the tool 'CreateVacancy' previously",
+      "formula": " (! F <'CalculateEnergy2AS'(;)> true) | (!(F <'CreateVacancy'(;)> (F <'CalculateEnergy2AS'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE2AS', we have to use 'CreateAntisite' at least twice and there can be a step in between",
-      "formula": "(! F <'CalculateDFE2AS'(;)> true) | (F (<'CreateAntisite'(;)> (X <'CreateAntisite'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy2AS', we have to use 'CreateAntisite' at least twice and there can be a step in between",
+      "formula": "(! F <'CalculateEnergy2AS'(;)> true) | (F (<'CreateAntisite'(;)> (X <'CreateAntisite'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE2AS', we can not use 'CreateAntisite' more than two times",
-      "formula": "(! F <'CalculateDFE2AS'(;)> true) | (G ! <'CreateAntisite'(;)> F <'CreateAntisite'(;)> F <'CreateAntisite'(;)> true))"
+      "description": "If we use the tool 'CalculateEnergy2AS', we can not use 'CreateAntisite' more than two times",
+      "formula": "(! F <'CalculateEnergy2AS'(;)> true) | (G ! <'CreateAntisite'(;)> F <'CreateAntisite'(;)> F <'CreateAntisite'(;)> true))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE2AS', we can only use 'CreateAntisiteAl' or 'CreateAntisiteFe', not both",
-      "formula": "(! F <'CalculateDFE2AS'(;)> true) | (G ((! <'CreateAntisiteAl'(;)> F <'CreateAntisiteFe'(;)> true) & (! <'CreateAntisiteFe'(;)> F <'CreateAntisiteAl'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy2AS', we can only use 'CreateAntisiteAl' or 'CreateAntisiteFe', not both",
+      "formula": "(! F <'CalculateEnergy2AS'(;)> true) | (G ((! <'CreateAntisiteAl'(;)> F <'CreateAntisiteFe'(;)> true) & (! <'CreateAntisiteFe'(;)> F <'CreateAntisiteAl'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1VacAB', we can not use the tool 'CreateAntisite' previously",
-      "formula": " (! F <'CalculateDFE1VacAB'(;)> true) | (!(F <'CreateAntisite'(;)> (F <'CalculateDFE1VacAB'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1VacAB', we can not use the tool 'CreateAntisite' previously",
+      "formula": " (! F <'CalculateEnergy1VacAB'(;)> true) | (!(F <'CreateAntisite'(;)> (F <'CalculateEnergy1VacAB'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1VacAB', we have to use 'CreateVacancy' at least twice and there can be a step in between",
-      "formula": "(! F <'CalculateDFE1VacAB'(;)> true) | (F (<'CreateVacancy'(;)> (X <'CreateVacancy'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1VacAB', we have to use 'CreateVacancy' at least twice and there can be a step in between",
+      "formula": "(! F <'CalculateEnergy1VacAB'(;)> true) | (F (<'CreateVacancy'(;)> (X <'CreateVacancy'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1VacAB', we can not use 'CreateVacancy' more than two times",
-      "formula": "(! F <'CalculateDFE1VacAB'(;)> true) | (G ! <'CreateVacancy'(;)> F <'CreateVacancy'(;)> F <'CreateVacancy'(;)> true))"
+      "description": "If we use the tool 'CalculateEnergy1VacAB', we can not use 'CreateVacancy' more than two times",
+      "formula": "(! F <'CalculateEnergy1VacAB'(;)> true) | (G ! <'CreateVacancy'(;)> F <'CreateVacancy'(;)> F <'CreateVacancy'(;)> true))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1VacAB', we have to use 'CreateVacancyAl' and 'CreateVacancyFe'",
-      "formula": "(! F <'CalculateDFE1VacAB'(;)> true) | (G ((! <'CreateVacancyAl'(;)> F <'CreateVacancyAl'(;)> true) & (! <'CreateVacancyFe'(;)> F <'CreateVacancyFe'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1VacAB', we have to use 'CreateVacancyAl' and 'CreateVacancyFe'",
+      "formula": "(! F <'CalculateEnergy1VacAB'(;)> true) | (G ((! <'CreateVacancyAl'(;)> F <'CreateVacancyAl'(;)> true) & (! <'CreateVacancyFe'(;)> F <'CreateVacancyFe'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASAB', we can not use the tool 'CreateVacancy' previously",
-      "formula": " (! F <'CalculateDFE1ASAB'(;)> true) | (!(F <'CreateVacancy'(;)> (F <'CalculateDFE1ASAB'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1ASAB', we can not use the tool 'CreateVacancy' previously",
+      "formula": " (! F <'CalculateEnergy1ASAB'(;)> true) | (!(F <'CreateVacancy'(;)> (F <'CalculateEnergy1ASAB'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASAB', we have to use 'CreateAntisite' at least twice and there can be a step in between",
-      "formula": "(! F <'CalculateDFE1ASAB'(;)> true) | (F (<'CreateAntisite'(;)> (X <'CreateAntisite'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1ASAB', we have to use 'CreateAntisite' at least twice and there can be a step in between",
+      "formula": "(! F <'CalculateEnergy1ASAB'(;)> true) | (F (<'CreateAntisite'(;)> (X <'CreateAntisite'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASAB', we can not use 'CreateAntisite' more than two times",
-      "formula": "(! F <'CalculateDFE1ASAB'(;)> true) | (G ! <'CreateAntisite'(;)> F <'CreateAntisite'(;)> F <'CreateAntisite'(;)> true))"
+      "description": "If we use the tool 'CalculateEnergy1ASAB', we can not use 'CreateAntisite' more than two times",
+      "formula": "(! F <'CalculateEnergy1ASAB'(;)> true) | (G ! <'CreateAntisite'(;)> F <'CreateAntisite'(;)> F <'CreateAntisite'(;)> true))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASAB', we have to use 'CreateAntisiteAl' and 'CreateAntisiteFe'",
-      "formula": "(! F <'CalculateDFE1ASAB'(;)> true) | (G ((! <'CreateAntisiteAl'(;)> F <'CreateAntisiteAl'(;)> true) & (! <'CreateAntisiteFe'(;)> F <'CreateAntisiteFe'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1ASAB', we have to use 'CreateAntisiteAl' and 'CreateAntisiteFe'",
+      "formula": "(! F <'CalculateEnergy1ASAB'(;)> true) | (G ((! <'CreateAntisiteAl'(;)> F <'CreateAntisiteAl'(;)> true) & (! <'CreateAntisiteFe'(;)> F <'CreateAntisiteFe'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASA1VacA', we have to use 'CreateDefect' at least twice and there can be a step in between",
-      "formula": "(! F <'CalculateDFE1ASA1VacA'(;)> true) | (F (<'CreateDefect'(;)> (X <'CreateDefect'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1ASA1VacA', we have to use 'CreateDefect' at least twice and there can be a step in between",
+      "formula": "(! F <'CalculateEnergy1ASA1VacA'(;)> true) | (F (<'CreateDefect'(;)> (X <'CreateDefect'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASA1VacA', we can not use 'CreateDefect' more than two times",
-      "formula": "(! F <'CalculateDFE1ASA1VacA'(;)> true) | (G ! <'CreateDefect'(;)> F <'CreateDefect'(;)> F <'CreateDefect'(;)> true))"
+      "description": "If we use the tool 'CalculateEnergy1ASA1VacA', we can not use 'CreateDefect' more than two times",
+      "formula": "(! F <'CalculateEnergy1ASA1VacA'(;)> true) | (G ! <'CreateDefect'(;)> F <'CreateDefect'(;)> F <'CreateDefect'(;)> true))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASA1VacA', we have to use 'CreateVacancy' and 'CreateAntisite'",
-      "formula": "(! F <'CalculateDFE1ASA1VacA'(;)> true) | (G ((! <'CreateAntisite'(;)> F <'CreateAntisite'(;)> true) & (! <'CreateVacancy'(;)> F <'CreateVacancy'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1ASA1VacA', we have to use 'CreateVacancy' and 'CreateAntisite'",
+      "formula": "(! F <'CalculateEnergy1ASA1VacA'(;)> true) | (G ((! <'CreateAntisite'(;)> F <'CreateAntisite'(;)> true) & (! <'CreateVacancy'(;)> F <'CreateVacancy'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASA1VacA', we can not use a combination of 'CreateDefectAl' and 'CreateDefectFe'",
-      "formula": "(! F <'CalculateDFE1ASA1VacA'(;)> true) | (G ((! <'CreateAntisiteAl'(;)> F <'CreateVacancyFe'(;)> true) & (! <'CreateAntisiteFe'(;)> F <'CreateVacancyAl'(;)> true) & (! <'CreateVacancyAl'(;)> F <'CreateAntisiteFe'(;)> true) & (! <'CreateVacancyFe'(;)> F <'CreateAntisiteAl'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1ASA1VacA', we can not use a combination of 'CreateDefectAl' and 'CreateDefectFe'",
+      "formula": "(! F <'CalculateEnergy1ASA1VacA'(;)> true) | (G ((! <'CreateAntisiteAl'(;)> F <'CreateVacancyFe'(;)> true) & (! <'CreateAntisiteFe'(;)> F <'CreateVacancyAl'(;)> true) & (! <'CreateVacancyAl'(;)> F <'CreateAntisiteFe'(;)> true) & (! <'CreateVacancyFe'(;)> F <'CreateAntisiteAl'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASA1VacB', we have to use 'CreateDefect' at least twice and there can be a step in between",
-      "formula": "(! F <'CalculateDFE1ASA1VacB'(;)> true) | (F (<'CreateDefect'(;)> (X <'CreateDefect'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1ASA1VacB', we have to use 'CreateDefect' at least twice and there can be a step in between",
+      "formula": "(! F <'CalculateEnergy1ASA1VacB'(;)> true) | (F (<'CreateDefect'(;)> (X <'CreateDefect'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASA1VacB', we can not use 'CreateDefect' more than two times",
-      "formula": "(! F <'CalculateDFE1ASA1VacB'(;)> true) | (G ! <'CreateDefect'(;)> F <'CreateDefect'(;)> F <'CreateDefect'(;)> true))"
+      "description": "If we use the tool 'CalculateEnergy1ASA1VacB', we can not use 'CreateDefect' more than two times",
+      "formula": "(! F <'CalculateEnergy1ASA1VacB'(;)> true) | (G ! <'CreateDefect'(;)> F <'CreateDefect'(;)> F <'CreateDefect'(;)> true))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASA1VacB', we have to use 'CreateVacancy' and 'CreateAntisite'",
-      "formula": "(! F <'CalculateDFE1ASA1VacB'(;)> true) | (G ((! <'CreateAntisite'(;)> F <'CreateAntisite'(;)> true) & (! <'CreateVacancy'(;)> F <'CreateVacancy'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1ASA1VacB', we have to use 'CreateVacancy' and 'CreateAntisite'",
+      "formula": "(! F <'CalculateEnergy1ASA1VacB'(;)> true) | (G ((! <'CreateAntisite'(;)> F <'CreateAntisite'(;)> true) & (! <'CreateVacancy'(;)> F <'CreateVacancy'(;)> true)))"
     },
     {
       "constraintid": "SLTLx",
-      "description": "If we use the tool 'CalculateDFE1ASA1VacB', we can not use a combination of 'CreateDefectAl' and 'CreateDefectFe'",
-      "formula": "(! F <'CalculateDFE1ASA1VacB'(;)> true) | (G ((! <'CreateAntisiteAl'(;)> F <'CreateVacancyAl'(;)> true) & (! <'CreateAntisiteFe'(;)> F <'CreateVacancyFe'(;)> true) & (! <'CreateVacancyAl'(;)> F <'CreateAntisiteAl'(;)> true) & (! <'CreateVacancyFe'(;)> F <'CreateAntisiteFe'(;)> true)))"
+      "description": "If we use the tool 'CalculateEnergy1ASA1VacB', we can not use a combination of 'CreateDefectAl' and 'CreateDefectFe'",
+      "formula": "(! F <'CalculateEnergy1ASA1VacB'(;)> true) | (G ((! <'CreateAntisiteAl'(;)> F <'CreateVacancyAl'(;)> true) & (! <'CreateAntisiteFe'(;)> F <'CreateVacancyFe'(;)> true) & (! <'CreateVacancyAl'(;)> F <'CreateAntisiteAl'(;)> true) & (! <'CreateVacancyFe'(;)> F <'CreateAntisiteFe'(;)> true)))"
     },
     {
       "constraintid": "itn_m",
@@ -201,7 +201,7 @@
       "constraintid": "connected_op",
       "parameters": [
         { "Tool" : ["CreateStructure"]},
-        { "Tool" : ["CalculateDefectFormationEnergy"]}
+        { "Tool" : ["CalculateEnergyNoDefect"]}
       ]
     }
   ]

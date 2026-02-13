@@ -52,7 +52,8 @@
         "id": "create_vacancy_Al",
         "taxonomyOperations": ["CreateVacancyAl"],
         "inputs": [
-          { "Type": ["Bulk"] }
+          { "Type": ["Bulk"] },
+          { "Type": ["Position"], "Format": ["Coordinates"] }
         ],
         "outputs": [
           { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
@@ -64,7 +65,8 @@
         "id": "create_vacancy_Fe",
         "taxonomyOperations": ["CreateVacancyFe"],
         "inputs": [
-          { "Type": ["Bulk"] }
+          { "Type": ["Bulk"] },
+          { "Type": ["Position"], "Format": ["Coordinates"] }
         ],
         "outputs": [
           { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
@@ -76,7 +78,8 @@
         "id": "create_antisite_Al",
         "taxonomyOperations": ["CreateAntisiteAl"],
         "inputs": [
-          { "Type": ["Bulk"] }
+          { "Type": ["Bulk"] },
+          { "Type": ["Position"], "Format": ["Coordinates"] }
         ],
         "outputs": [
           { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
@@ -88,7 +91,8 @@
         "id": "create_antisite_Fe",
         "taxonomyOperations": ["CreateAntisiteFe"],
         "inputs": [
-          { "Type": ["Bulk"] }
+          { "Type": ["Bulk"] },
+          { "Type": ["Position"], "Format": ["Coordinates"] }
         ],
         "outputs": [
           { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
@@ -233,103 +237,120 @@
         "implementation": { "code": "job.potential = 'insert potential'\n" }
       },
       {
-        "label": "calculate_vacancy_formation_energy",
-        "id": "calculate_vacancy_formation_energy",
-        "taxonomyOperations": ["CalculateVacancyFormationEnergy"],
+        "label": "calculate_energy_1Vac",
+        "id": "calculate_energy_1Vac",
+        "taxonomyOperations": ["CalculateEnergy1Vac"],
         "inputs": [
-          { "Type": ["Structure"] },
           { "Type": ["Structure"] }
         ],
         "outputs": [
-          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+          { "Type": ["Energy"], "Format": ["Float"] }
         ],
         "implementation": { "code": "# Calculate Vacancy Formation Energy\nbulk_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_bulk', delete_existing_job=True)\nbulk_job.structure = structure\nbulk_job.potential = bulk_job.list_potentials()[0]\nbulk_job.run()\nE_v = relax_job.output.energy_pot[-1]\nE_b = bulk_job.output.energy_pot[-1]\nE_vf = E_v - (3/4 * E_b)\nprint(E_vf)\nEOF\n" }
       },
       {
-        "label": "calculate_antisite_formation_energy",
-        "id": "calculate_antisite_formation_energy",
-        "taxonomyOperations": ["CalculateAntisiteFormationEnergy"],
+        "label": "calculate_energy_1AS",
+        "id": "calculate_energy_1AS",
+        "taxonomyOperations": ["CalculateEnergy1AS"],
         "inputs": [
-          { "Type": ["Structure"] },
           { "Type": ["Structure"] }
         ],
         "outputs": [
-          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+          { "Type": ["Energy"], "Format": ["Float"] }
         ],
         "implementation": { }
       },
       {
-        "label": "calculate_dfe_2Vac",
-        "id": "calculate_dfe_2Vac",
-        "taxonomyOperations": ["CalculateDFE2Vac"],
+        "label": "calculate_energy_2Vac",
+        "id": "calculate_energy_2Vac",
+        "taxonomyOperations": ["CalculateEnergy2Vac"],
         "inputs": [
-          { "Type": ["Structure"] },
           { "Type": ["Structure"] }
         ],
         "outputs": [
-          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+          { "Type": ["Energy"], "Format": ["Float"] }
         ],
         "implementation": { }
       },
       {
-        "label": "calculate_dfe_2AS",
-        "id": "calculate_dfe_2AS",
-        "taxonomyOperations": ["CalculateDFE2AS"],
+        "label": "calculate_energy_2AS",
+        "id": "calculate_energy_2AS",
+        "taxonomyOperations": ["CalculateEnergy2AS"],
         "inputs": [
-          { "Type": ["Structure"] },
           { "Type": ["Structure"] }
         ],
         "outputs": [
-          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+          { "Type": ["Energy"], "Format": ["Float"] }
         ],
         "implementation": { }
       },
       {
-        "label": "calculate_dfe_1Vac_AB",
-        "id": "calculate_dfe_1Vac_AB",
-        "taxonomyOperations": ["CalculateDFE1VacAB"],
+        "label": "calculate_energy_1Vac_AB",
+        "id": "calculate_energy_1Vac_AB",
+        "taxonomyOperations": ["CalculateEnergy1VacAB"],
         "inputs": [
-          { "Type": ["Structure"] },
           { "Type": ["Structure"] }
         ],
         "outputs": [
-          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+          { "Type": ["Energy"], "Format": ["Float"] }
         ],
         "implementation": { }
       },
       {
-        "label": "calculate_dfe_1AS_AB",
-        "id": "calculate_dfe_1AS_AB",
-        "taxonomyOperations": ["CalculateDFE1ASAB"],
+        "label": "calculate_energy_1AS_AB",
+        "id": "calculate_energy_1AS_AB",
+        "taxonomyOperations": ["CalculateEnergy1ASAB"],
         "inputs": [
-          { "Type": ["Structure"] },
           { "Type": ["Structure"] }
         ],
         "outputs": [
-          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+          { "Type": ["Energy"], "Format": ["Float"] }
         ],
         "implementation": { }
       },
       {
-        "label": "calculate_dfe_1AS_1Vac_A",
-        "id": "calculate_dfe_1AS_1Vac_A",
-        "taxonomyOperations": ["CalculateDFE1ASA1VacA"],
+        "label": "calculate_energy_1AS_1Vac_A",
+        "id": "calculate_energy_1AS_1Vac_A",
+        "taxonomyOperations": ["CalculateEnergy1ASA1VacA"],
         "inputs": [
-          { "Type": ["Structure"] },
           { "Type": ["Structure"] }
         ],
         "outputs": [
-          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
+          { "Type": ["Energy"], "Format": ["Float"] }
         ],
         "implementation": { }
       },
       {
-        "label": "calculate_dfe_1AS_1Vac_AB",
-        "id": "calculate_dfe_1AS_1Vac_AB",
-        "taxonomyOperations": ["CalculateDFE1ASA1VacB"],
+        "label": "calculate_energy_1AS_1Vac_AB",
+        "id": "calculate_energy_1AS_1Vac_AB",
+        "taxonomyOperations": ["CalculateEnergy1ASA1VacB"],
         "inputs": [
-          { "Type": ["Structure"] },
           { "Type": ["Structure"] }
+        ],
+        "outputs": [
+          { "Type": ["Energy"], "Format": ["Float"] }
+        ],
+        "implementation": { }
+      },
+      {
+        "label": "calculate_energy_no_defect",
+        "id": "calculate_energy_no_defect",
+        "taxonomyOperations": ["CalculateEnergyNoDefect"],
+        "inputs": [
+          { "Type": ["Structure"] }
+        ],
+        "outputs": [
+          { "Type": ["Energy"], "Format": ["Float"] }
+        ],
+        "implementation": { }
+      },
+      {
+        "label": "calculate_defect_formation_energy",
+        "id": "calculate_energy_1AS_1Vac_AB",
+        "taxonomyOperations": ["CalculateDefectFormationEnergy"],
+        "inputs": [
+          { "Type": ["Energy"] },
+          { "Type": ["Energy"] }
         ],
         "outputs": [
           { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }

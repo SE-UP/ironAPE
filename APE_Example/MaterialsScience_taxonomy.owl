@@ -85,62 +85,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/materials_science#CalculateAntisiteFormationEnergy -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateAntisiteFormationEnergy">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateDFE1ASA1VacA -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDFE1ASA1VacA">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateDFE1ASA1VacB -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDFE1ASA1VacB">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateDFE1ASAB -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDFE1ASAB">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateDFE1VacAB -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDFE1VacAB">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateDFE2AS -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDFE2AS">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateDFE2Vac -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDFE2Vac">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/materials_science#CalculateDefectConcentration -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateDefectConcentration">
@@ -157,10 +101,82 @@
     
 
 
-    <!-- http://www.semanticweb.org/materials_science#CalculateVacancyFormationEnergy -->
+    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy -->
 
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateVacancyFormationEnergy">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateDefectFormationEnergy"/>
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1AS -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1AS">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1ASA1VacA -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1ASA1VacA">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1ASA1VacB -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1ASA1VacB">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1ASAB -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1ASAB">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1Vac -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1Vac">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1VacAB -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1VacAB">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy2AS -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy2AS">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy2Vac -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy2Vac">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalculateEnergyNoDefect -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergyNoDefect">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
     </owl:Class>
     
 
@@ -185,6 +201,14 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#ConfigureStructure">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#Tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#Coordinates -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#Coordinates">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#Format"/>
     </owl:Class>
     
 
@@ -350,6 +374,14 @@
     <!-- http://www.semanticweb.org/materials_science#DefectFormationEnergy -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#DefectFormationEnergy">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#MaterialProperty"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#Energy -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#Energy">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#MaterialProperty"/>
     </owl:Class>
     
@@ -535,6 +567,14 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#Plotting">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#Tool"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#Position -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#Position">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#Type"/>
     </owl:Class>
     
 
