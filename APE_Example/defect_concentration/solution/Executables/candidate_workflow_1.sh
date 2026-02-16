@@ -15,9 +15,10 @@ pr = Project('example_project')
 
 structure = pr.create.structure.ase.bulk(Material, cubic=True)
 
-# Error: Tool 'create_antisite_Fe' is missing the execution code. Skipping.
-# Error: Tool 'calc_chemical_potential_A' is missing the execution code. Skipping.
-# Error: Tool 'calc_chemical_potential_B' is missing the execution code. Skipping.
+# Create Vacancy Structure
+vacancy_structure = structure.copy()
+del vacancy_structure[1]
+
 # Relax Structure
 relax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')
 relax_job.structure = vacancy_structure
@@ -26,8 +27,9 @@ relax_job.calc_minimize(pressure=0.0)
 relax_job.run()
 relax_structure = relax_job.get_final_structure()
 
-# Error: Tool 'calculate_energy_no_defect' is missing the execution code. Skipping.
-# Error: Tool 'calculate_energy_1AS' is missing the execution code. Skipping.
+# Error: Tool 'run_vasp' is missing the execution code. Skipping.
+# Error: Tool 'run_vasp' is missing the execution code. Skipping.
 # Error: Tool 'calculate_defect_formation_energy' is missing the execution code. Skipping.
+# Error: Tool 'calc_chemical_potential_A' is missing the execution code. Skipping.
 # Error: Tool 'calc_defect_concentration' is missing the execution code. Skipping.
-echo "1. output is: $node-1649878109"
+echo "1. output is: $node-1569910685"

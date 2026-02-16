@@ -101,86 +101,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1AS -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1AS">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1ASA1VacA -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1ASA1VacA">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1ASA1VacB -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1ASA1VacB">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1ASAB -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1ASAB">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1Vac -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1Vac">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy1VacAB -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy1VacAB">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy2AS -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy2AS">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateEnergy2Vac -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergy2Vac">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.semanticweb.org/materials_science#CalculateEnergyNoDefect -->
-
-    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateEnergyNoDefect">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#CalculateEnergy"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.semanticweb.org/materials_science#ChemicalPotential -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#ChemicalPotential">
@@ -611,6 +531,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/materials_science#RunGpaw -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#RunGpaw">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunJob"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/materials_science#RunJob -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#RunJob">
@@ -630,6 +558,22 @@
     <!-- http://www.semanticweb.org/materials_science#RunMurnaghanJob -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#RunMurnaghanJob">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunJob"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#RunSphinx -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#RunSphinx">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunJob"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#RunVasp -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#RunVasp">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunJob"/>
     </owl:Class>
     
