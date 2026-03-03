@@ -1,5 +1,6 @@
 import json
 from rdflib import RDF, RDFS, OWL, BNode, Graph
+from rdflib.namespace import split_uri
 from semantikon import ontology as onto
 
 node_query = """
@@ -32,7 +33,7 @@ def knowledge_graph_to_ape(graph: Graph) -> list:
             "label": entry[1].toPython(),
             "id": entry[2].toPython(),
             "taxonomyOperations": (
-                [uri.toPython()]
+                [split_uri(uri)[1]]
             ),
         }
         g_onto.add((uri, RDFS.subClassOf, onto.BASE["Tool"]))
@@ -64,10 +65,10 @@ def knowledge_graph_to_ape(graph: Graph) -> list:
                 break
         if not no_uri:
             data["inputs"] = [
-                {"Type": [x.toPython()]} for _, x in sorted(inputs, key=lambda pair: pair[0])
+                {"Type": [split_uri(x)[1]]} for _, x in sorted(inputs, key=lambda pair: pair[0])
             ]
             data["outputs"] = [
-                {"Type": [x.toPython()]} for _, x in sorted(outputs, key=lambda pair: pair[0])
+                {"Type": [split_uri(x)[1]]} for _, x in sorted(outputs, key=lambda pair: pair[0])
             ]
             for inp in inputs:
                 g_onto.add((inp[1], RDFS.subClassOf, onto.BASE["Type"]))
