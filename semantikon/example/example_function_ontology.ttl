@@ -11,7 +11,7 @@ sns:__main__-dye-not_defined a pmdco:0000010 ;
         sns:__main__-dye-not_defined_input_color,
         sns:__main__-dye-not_defined_output_output_0 ;
     iao:0000235 [ a iao:0020000 ;
-            pmdco:0000006 "e6c42ab83ea8be6dfcce9bbce9e5ecc1e47cc5eb4abd445d3d624b502817ea44" ],
+            pmdco:0000006 "dye:583cc9ecff9df7c3d9876b538a812e7e88423b1ba679eb01f89f1a049f0c8283" ],
         sns:__main__,
         sns:dye_function_name .
 
@@ -19,9 +19,9 @@ sns:__main__-get_kinetic_energy-not_defined a pmdco:0000010 ;
     bfo:0000051 sns:__main__-get_kinetic_energy-not_defined_input_mass,
         sns:__main__-get_kinetic_energy-not_defined_input_velocity,
         sns:__main__-get_kinetic_energy-not_defined_output_output_0 ;
-    iao:0000136 [ a <http://example.org/getKineticEnergy> ] ;
+    iao:0000136 [ a sns:getKineticEnergy ] ;
     iao:0000235 [ a iao:0020000 ;
-            pmdco:0000006 "72673be434ed6412b2b57ff8a33a40c77c62fa867eedbec038753a8d390ee565" ],
+            pmdco:0000006 "get_kinetic_energy:dd7bc694fda45b4dd84a23bede0f6884aeab09d6fc321982ead7d48728f3df39" ],
         sns:__main__,
         sns:get_kinetic_energy_function_name .
 
@@ -33,7 +33,7 @@ sns:__main__-sell-not_defined a pmdco:0000010 ;
     bfo:0000051 sns:__main__-sell-not_defined_input_clothes,
         sns:__main__-sell-not_defined_output_output_0 ;
     iao:0000235 [ a iao:0020000 ;
-            pmdco:0000006 "6caf1dcc93c254840f107c48cc25753ba7575f2fc7e11e6484375fb1422b8074" ],
+            pmdco:0000006 "sell:a912e12aebd824398505ec668025768909f7b8297b372c4546b745204e7bacb5" ],
         sns:__main__,
         sns:sell_function_name .
 
@@ -41,7 +41,7 @@ sns:__main__-wash-not_defined a pmdco:0000010 ;
     bfo:0000051 sns:__main__-wash-not_defined_input_clothes,
         sns:__main__-wash-not_defined_output_output_0 ;
     iao:0000235 [ a iao:0020000 ;
-            pmdco:0000006 "04a628c845c0d41d8cc4980021f1af531e56133295a5c07ee9fdd88131a4c4d3" ],
+            pmdco:0000006 "wash:d1206e75ac396a97fa92f97e6cd000870c1aaa826e8469ef4f8725b519b273f1" ],
         sns:__main__,
         sns:wash_function_name .
 
@@ -58,19 +58,25 @@ sns:__main__-dye-not_defined_output_output_0 a pmdco:0000015 ;
     rdfs:label "output_0" ;
     pmdco:0001857 0 .
 
-sns:__main__-get_kinetic_energy-not_defined_input_mass a pmdco:0000014 ;
+sns:__main__-get_kinetic_energy-not_defined_input_mass a [ a owl:Restriction ;
+            owl:allValuesFrom sns:Mass ;
+            owl:onProperty iao:0000136 ],
+        pmdco:0000014 ;
     rdfs:label "mass" ;
-    iao:0000136 [ a <http://example.org/Mass> ] ;
     pmdco:0001857 0 .
 
-sns:__main__-get_kinetic_energy-not_defined_input_velocity a pmdco:0000014 ;
+sns:__main__-get_kinetic_energy-not_defined_input_velocity a [ a owl:Restriction ;
+            owl:allValuesFrom sns:Velocity ;
+            owl:onProperty iao:0000136 ],
+        pmdco:0000014 ;
     rdfs:label "velocity" ;
-    iao:0000136 [ a <http://example.org/Velocity> ] ;
     pmdco:0001857 1 .
 
-sns:__main__-get_kinetic_energy-not_defined_output_output_0 a pmdco:0000015 ;
+sns:__main__-get_kinetic_energy-not_defined_output_output_0 a [ a owl:Restriction ;
+            owl:allValuesFrom sns:KineticEnergy ;
+            owl:onProperty iao:0000136 ],
+        pmdco:0000015 ;
     rdfs:label "output_0" ;
-    iao:0000136 [ a <http://example.org/KineticEnergy> ] ;
     pmdco:0001857 0 .
 
 sns:__main__-get_speed-not_defined a pmdco:0000010 ;
@@ -78,33 +84,39 @@ sns:__main__-get_speed-not_defined a pmdco:0000010 ;
         sns:__main__-get_speed-not_defined_input_time,
         sns:__main__-get_speed-not_defined_output_output_0 ;
     iao:0000235 [ a iao:0020000 ;
-            pmdco:0000006 "04108ab598a833ba8b63e1938b2ca2982a4d22b364d6e993f113e36561f6c36b" ],
+            pmdco:0000006 "get_speed:b2bc6cdd3fef150b308e49370546f967e20ff12ec7e9b66b215f66de1f3eed49" ],
         sns:__main__,
         sns:get_speed_function_name .
 
-sns:__main__-get_speed-not_defined_input_distance a pmdco:0000014 ;
+sns:__main__-get_speed-not_defined_input_distance a [ a owl:Restriction ;
+            owl:allValuesFrom sns:Distance ;
+            owl:onProperty iao:0000136 ],
+        pmdco:0000014 ;
     rdfs:label "distance" ;
-    iao:0000136 [ a <http://example.org/Distance> ] ;
     pmdco:0001857 0 .
 
-sns:__main__-get_speed-not_defined_input_time a pmdco:0000014 ;
+sns:__main__-get_speed-not_defined_input_time a [ a owl:Restriction ;
+            owl:allValuesFrom sns:time ;
+            owl:onProperty iao:0000136 ],
+        pmdco:0000014 ;
     rdfs:label "time" ;
-    iao:0000136 [ a <http://example.org/time> ] ;
     pmdco:0001857 1 .
 
-sns:__main__-get_speed-not_defined_output_output_0 a pmdco:0000015 ;
+sns:__main__-get_speed-not_defined_output_output_0 a [ a owl:Restriction ;
+            owl:allValuesFrom sns:Velocity ;
+            owl:onProperty iao:0000136 ],
+        pmdco:0000015 ;
     rdfs:label "output_0" ;
-    iao:0000136 [ a <http://example.org/Velocity> ] ;
     pmdco:0001857 0 .
 
 sns:__main__-sell-not_defined_input_clothes a pmdco:0000014 ;
     rdfs:label "clothes" ;
     sns:has_constraint [ a owl:Restriction ;
-            owl:onProperty <http://example.org/hasProperty> ;
-            owl:someValuesFrom <http://example.org/Color> ],
+            owl:onProperty sns:hasProperty ;
+            owl:someValuesFrom sns:Color ],
         [ a owl:Restriction ;
-            owl:onProperty <http://example.org/hasProperty> ;
-            owl:someValuesFrom <http://example.org/Cleaned> ] ;
+            owl:onProperty sns:hasProperty ;
+            owl:someValuesFrom sns:Cleaned ] ;
     pmdco:0001857 0 .
 
 sns:__main__-sell-not_defined_output_output_0 a pmdco:0000015 ;
