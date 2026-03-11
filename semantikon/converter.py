@@ -32,9 +32,7 @@ def knowledge_graph_to_ape(graph: Graph) -> list:
         data = {
             "label": entry[1].toPython(),
             "id": entry[2].toPython(),
-            "taxonomyOperations": (
-                [split_uri(uri)[1]]
-            ),
+            "taxonomyOperations": ([split_uri(uri)[1]]),
         }
         g_onto.add((uri, RDFS.subClassOf, onto.BASE["Tool"]))
         g_onto.add((uri, RDF.type, OWL.Class))
@@ -65,10 +63,12 @@ def knowledge_graph_to_ape(graph: Graph) -> list:
                 break
         if not no_uri:
             data["inputs"] = [
-                {"Type": [split_uri(x)[1]]} for _, x in sorted(inputs, key=lambda pair: pair[0])
+                {"Type": [split_uri(x)[1]]}
+                for _, x in sorted(inputs, key=lambda pair: pair[0])
             ]
             data["outputs"] = [
-                {"Type": [split_uri(x)[1]]} for _, x in sorted(outputs, key=lambda pair: pair[0])
+                {"Type": [split_uri(x)[1]]}
+                for _, x in sorted(outputs, key=lambda pair: pair[0])
             ]
             for inp in inputs:
                 g_onto.add((inp[1], RDFS.subClassOf, onto.BASE["Type"]))
