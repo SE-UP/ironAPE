@@ -1,6 +1,6 @@
 {
-  "ontology_path": "./semantikon/example/taxonomy_changedPrefixes.owl",
-  "ontologyPrefixIRI": "http://www.semanticweb.org/taxonomy_changedPrefixes#",
+  "ontology_path": "./semantikon/example/taxonomy.owl",
+  "ontologyPrefixIRI": "http://pyiron.org/ontology/",
   "toolsTaxonomyRoot": "Tool",
   "dataDimensionsTaxonomyRoots": [
     "Type",
