@@ -50,7 +50,7 @@ WHERE {
 }"""
 
 
-def knowledge_graph_to_ape(graph: Graph) -> list:
+def knowledge_graph_to_ape(graph: Graph) -> tuple[list, Graph]:
     g_onto = Graph()
     g_onto.add((onto.BASE["Tool"], RDF.type, OWL.Class))
     g_onto.add((onto.BASE["Type"], RDF.type, OWL.Class))
