@@ -531,10 +531,18 @@
     
 
 
+    <!-- http://www.semanticweb.org/materials_science#RunDFT -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#RunDFT">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunJob"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/materials_science#RunGpaw -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#RunGpaw">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunJob"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunDFT"/>
     </owl:Class>
     
 
@@ -566,7 +574,7 @@
     <!-- http://www.semanticweb.org/materials_science#RunSphinx -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#RunSphinx">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunJob"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunDFT"/>
     </owl:Class>
     
 
@@ -574,7 +582,7 @@
     <!-- http://www.semanticweb.org/materials_science#RunVasp -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#RunVasp">
-        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunJob"/>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#RunDFT"/>
     </owl:Class>
     
 

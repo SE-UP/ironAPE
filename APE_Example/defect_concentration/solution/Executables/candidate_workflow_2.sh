@@ -13,14 +13,13 @@ python - << EOF
 from pyiron.project import Project
 pr = Project('example_project')
 
-# Error: Tool 'calc_chemical_potential_A' is missing the execution code. Skipping.
 structure = pr.create.structure.ase.bulk(Material, cubic=True)
 
+# Error: Tool 'run_vasp' is missing the execution code. Skipping.
 # Create Vacancy Structure
 vacancy_structure = structure.copy()
 del vacancy_structure[1]
 
-# Error: Tool 'run_vasp' is missing the execution code. Skipping.
 # Relax Structure
 relax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')
 relax_job.structure = vacancy_structure
@@ -29,7 +28,8 @@ relax_job.calc_minimize(pressure=0.0)
 relax_job.run()
 relax_structure = relax_job.get_final_structure()
 
-# Error: Tool 'run_gpaw' is missing the execution code. Skipping.
+# Error: Tool 'calc_chemical_potential_A' is missing the execution code. Skipping.
+# Error: Tool 'run_vasp' is missing the execution code. Skipping.
 # Error: Tool 'calculate_defect_formation_energy' is missing the execution code. Skipping.
 # Error: Tool 'calc_defect_concentration' is missing the execution code. Skipping.
 echo "1. output is: $node-1569910685"
