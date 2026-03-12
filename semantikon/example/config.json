@@ -6,7 +6,7 @@
     "Type",
     "Format"
   ],
-  "tool_annotations_path": "./semantikon/example/tool_annotations_renamed.json",
+  "tool_annotations_path": "./semantikon/example/tool_annotations.json",
   "strict_tool_annotations": "false",
   "constraints_path": "./semantikon/example/constraints.json",
   "timeout_sec": "300",
