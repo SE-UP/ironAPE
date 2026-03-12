@@ -1,6 +1,6 @@
 {
   "ontology_path": "./semantikon/example/taxonomy.owl",
-  "ontologyPrefixIRI": "http://pyiron.org/",
+  "ontologyPrefixIRI": "http://pyiron.org/ontology/",
   "toolsTaxonomyRoot": "Tool",
   "dataDimensionsTaxonomyRoots": [
     "Type",
