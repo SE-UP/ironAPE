@@ -1,5 +1,6 @@
 import json
 from rdflib import RDF, RDFS, OWL, BNode, Graph
+from rdflib.namespace import split_uri
 from semantikon import ontology as onto
 
 node_query = """
@@ -20,7 +21,36 @@ SELECT ?software ?label ?identifier ?uri WHERE {
 }"""
 
 
-def knowledge_graph_to_ape(graph: Graph) -> list:
+io_query = """PREFIX bfo: <http://purl.obolibrary.org/obo/BFO_>
+PREFIX pmd: <https://w3id.org/pmd/co/PMD_>
+PREFIX iao: <http://purl.obolibrary.org/obo/IAO_>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?bnode ?parameter_position ?is_about_class ?is_input
+WHERE {
+  ?software bfo:0000051 ?bnode .
+
+  OPTIONAL {
+    ?bnode rdf:type pmd:0000014 .
+    BIND(true AS ?is_input)
+  }
+  FILTER(!BOUND(?is_input) || ?is_input = true)
+
+  OPTIONAL {
+    ?bnode rdf:type ?is_about_node .
+    ?is_about_node rdf:type owl:Restriction .
+    ?is_about_node owl:allValuesFrom ?is_about_class .
+    ?is_about_node owl:onProperty iao:0000136 .
+  }
+
+  # Get the parameter position of the blank node
+  OPTIONAL {
+    ?bnode pmd:0001857 ?parameter_position .
+  }
+}"""
+
+
+def knowledge_graph_to_ape(graph: Graph) -> tuple[list, Graph]:
     g_onto = Graph()
     g_onto.add((onto.BASE["Tool"], RDF.type, OWL.Class))
     g_onto.add((onto.BASE["Type"], RDF.type, OWL.Class))
@@ -31,9 +61,7 @@ def knowledge_graph_to_ape(graph: Graph) -> list:
         data = {
             "label": entry[1].toPython(),
             "id": entry[2].toPython(),
-            "taxonomyOperations": (
-                [uri.toPython()]
-            ),
+            "taxonomyOperations": ([split_uri(uri)[1]]),
         }
         g_onto.add((uri, RDFS.subClassOf, onto.BASE["Tool"]))
         g_onto.add((uri, RDF.type, OWL.Class))
@@ -41,20 +69,10 @@ def knowledge_graph_to_ape(graph: Graph) -> list:
         no_uri = False
         inputs = []
         outputs = []
-        for bnode in graph.objects(software, onto.SNS.has_part):
-            is_input = (
-                RDF.type,
-                onto.SNS.input_specification,
-            ) in graph.predicate_objects(bnode)
-            if list(graph.objects(bnode, onto.SNS.is_about)):
-                is_about_node = list(graph.objects(bnode, onto.SNS.is_about))[0]
-                is_about_class = list(graph.objects(is_about_node, RDF.type))[0]
-                io = [
-                    list(graph.objects(bnode, onto.SNS.has_parameter_position))[
-                        0
-                    ].toPython(),
-                    is_about_class,
-                ]
+        for io_entry in graph.query(io_query, initBindings={"software": software}):
+            is_input = io_entry[3].toPython() if io_entry[3] is not None else False
+            if io_entry[2] is not None:
+                io = [io_entry[1].toPython(), io_entry[2]]
                 if is_input:
                     inputs.append(io)
                 else:
@@ -64,10 +82,12 @@ def knowledge_graph_to_ape(graph: Graph) -> list:
                 break
         if not no_uri:
             data["inputs"] = [
-                {"Type": [x.toPython()]} for _, x in sorted(inputs, key=lambda pair: pair[0])
+                {"Type": [split_uri(x)[1]]}
+                for _, x in sorted(inputs, key=lambda pair: pair[0])
             ]
             data["outputs"] = [
-                {"Type": [x.toPython()]} for _, x in sorted(outputs, key=lambda pair: pair[0])
+                {"Type": [split_uri(x)[1]]}
+                for _, x in sorted(outputs, key=lambda pair: pair[0])
             ]
             for inp in inputs:
                 g_onto.add((inp[1], RDFS.subClassOf, onto.BASE["Type"]))

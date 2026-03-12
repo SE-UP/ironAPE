@@ -3,7 +3,7 @@ from typing import Annotated
 from semantikon import ontology as onto
 from semantikon.metadata import SemantikonURI, meta
 
-EX = Namespace("http://example.org/")
+EX = Namespace("http://pyiron.org/ontology/")
 
 
 def get_speed(
