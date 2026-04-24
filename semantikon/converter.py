@@ -50,36 +50,78 @@ WHERE {
 }"""
 
 
-def knowledge_graph_to_ape(graph: Graph) -> tuple[list, Graph]:
+def initialize_ontology() -> Graph:
+    """Initialize the ontology graph with base classes."""
     g_onto = Graph()
     g_onto.add((onto.BASE["Tool"], RDF.type, OWL.Class))
     g_onto.add((onto.BASE["Type"], RDF.type, OWL.Class))
     g_onto.add((onto.BASE["Format"], RDF.type, OWL.Class))
+    return g_onto
+
+
+def process_io_query(graph: Graph, software: Any) -> tuple[list, list, bool]:
+    """Process the IO query for a given software."""
+    inputs, outputs = [], []
+    no_uri = False
+    for io_entry in graph.query(io_query, initBindings={"software": software}):
+        is_input = io_entry[3].toPython() if io_entry[3] is not None else False
+        if io_entry[2] is not None:
+            io = [io_entry[1].toPython(), io_entry[2]]
+            if is_input:
+                inputs.append(io)
+            else:
+                outputs.append(io)
+        else:
+            no_uri = True
+            break
+    return inputs, outputs, no_uri
+
+
+def process_io_query(graph: Graph, software: Any) -> tuple[list, list, bool]:
+    """Process the IO query for a given software."""
+    inputs, outputs = [], []
+    no_uri = False
+    for io_entry in graph.query(io_query, initBindings={"software": software}):
+        is_input = io_entry[3].toPython() if io_entry[3] is not None else False
+        if io_entry[2] is not None:
+            io = [io_entry[1].toPython(), io_entry[2]]
+            if is_input:
+                inputs.append(io)
+            else:
+                outputs.append(io)
+        else:
+            no_uri = True
+            break
+    return inputs, outputs, no_uri
+
+
+def add_to_ontology(g_onto: Graph, inputs: list, outputs: list):
+    """Add inputs and outputs to the ontology graph."""
+    for inp in inputs:
+        g_onto.add((inp[1], RDFS.subClassOf, onto.BASE["Type"]))
+        g_onto.add((inp[1], RDF.type, OWL.Class))
+    for out in outputs:
+        g_onto.add((out[1], RDFS.subClassOf, onto.BASE["Type"]))
+        g_onto.add((out[1], RDF.type, OWL.Class))
+
+
+def knowledge_graph_to_ape(graph: Graph) -> tuple[list[dict[str, Any]], Graph]:
+    """Convert a knowledge graph to APE format."""
+    g_onto = initialize_ontology()
     all_data = []
+
     for entry in graph.query(node_query):
         uri = onto.BASE[entry[1].toPython()] if entry[3] is None else entry[3]
         data = {
             "label": entry[1].toPython(),
             "id": entry[2].toPython(),
-            "taxonomyOperations": ([split_uri(uri)[1]]),
+            "taxonomyOperations": [split_uri(uri)[1]],
         }
         g_onto.add((uri, RDFS.subClassOf, onto.BASE["Tool"]))
         g_onto.add((uri, RDF.type, OWL.Class))
+
         software = entry[0]
-        no_uri = False
-        inputs = []
-        outputs = []
-        for io_entry in graph.query(io_query, initBindings={"software": software}):
-            is_input = io_entry[3].toPython() if io_entry[3] is not None else False
-            if io_entry[2] is not None:
-                io = [io_entry[1].toPython(), io_entry[2]]
-                if is_input:
-                    inputs.append(io)
-                else:
-                    outputs.append(io)
-            else:
-                no_uri = True
-                break
+        inputs, outputs, no_uri = process_io_query(graph, software)
         if not no_uri:
             data["inputs"] = [
                 {"Type": [split_uri(x)[1]]}
@@ -89,13 +131,9 @@ def knowledge_graph_to_ape(graph: Graph) -> tuple[list, Graph]:
                 {"Type": [split_uri(x)[1]]}
                 for _, x in sorted(outputs, key=lambda pair: pair[0])
             ]
-            for inp in inputs:
-                g_onto.add((inp[1], RDFS.subClassOf, onto.BASE["Type"]))
-                g_onto.add((inp[1], RDF.type, OWL.Class))
-            for out in outputs:
-                g_onto.add((out[1], RDFS.subClassOf, onto.BASE["Type"]))
-                g_onto.add((out[1], RDF.type, OWL.Class))
+            add_to_ontology(g_onto, inputs, outputs)
             all_data.append(data)
+
     return all_data, g_onto
 
 
@@ -103,7 +141,9 @@ if __name__ == "__main__":
     graph = Graph()
     graph.parse("example/example_function_ontology.ttl")
     all_data, g_onto = knowledge_graph_to_ape(graph)
+
     with open("example/tool_annotations.json", "w") as f:
         json.dump({"functions": all_data}, f, indent=4)
+
     with open("example/taxonomy.owl", "w") as f:
         f.write(g_onto.serialize(format="xml"))
