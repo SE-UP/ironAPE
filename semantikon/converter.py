@@ -77,26 +77,10 @@ def process_io_query(graph: Graph, software: Any) -> tuple[list, list, bool]:
     return inputs, outputs, no_uri
 
 
-def process_io_query(graph: Graph, software: Any) -> tuple[list, list, bool]:
-    """Process the IO query for a given software."""
-    inputs, outputs = [], []
-    no_uri = False
-    for io_entry in graph.query(io_query, initBindings={"software": software}):
-        is_input = io_entry[3].toPython() if io_entry[3] is not None else False
-        if io_entry[2] is not None:
-            io = [io_entry[1].toPython(), io_entry[2]]
-            if is_input:
-                inputs.append(io)
-            else:
-                outputs.append(io)
-        else:
-            no_uri = True
-            break
-    return inputs, outputs, no_uri
-
-
-def add_to_ontology(g_onto: Graph, inputs: list, outputs: list):
+def add_to_ontology(g_onto: Graph, inputs: list, outputs: list, uri: Any) -> None:
     """Add inputs and outputs to the ontology graph."""
+    g_onto.add((uri, RDFS.subClassOf, onto.BASE["Tool"]))
+    g_onto.add((uri, RDF.type, OWL.Class))
     for inp in inputs:
         g_onto.add((inp[1], RDFS.subClassOf, onto.BASE["Type"]))
         g_onto.add((inp[1], RDF.type, OWL.Class))
@@ -111,27 +95,23 @@ def knowledge_graph_to_ape(graph: Graph) -> tuple[list[dict[str, Any]], Graph]:
     all_data = []
 
     for entry in graph.query(node_query):
-        uri = onto.BASE[entry[1].toPython()] if entry[3] is None else entry[3]
-        data = {
-            "label": entry[1].toPython(),
-            "id": entry[2].toPython(),
-            "taxonomyOperations": [split_uri(uri)[1]],
-        }
-        g_onto.add((uri, RDFS.subClassOf, onto.BASE["Tool"]))
-        g_onto.add((uri, RDF.type, OWL.Class))
-
-        software = entry[0]
-        inputs, outputs, no_uri = process_io_query(graph, software)
+        inputs, outputs, no_uri = process_io_query(graph, entry[0])
         if not no_uri:
-            data["inputs"] = [
-                {"Type": [split_uri(x)[1]]}
-                for _, x in sorted(inputs, key=lambda pair: pair[0])
-            ]
-            data["outputs"] = [
-                {"Type": [split_uri(x)[1]]}
-                for _, x in sorted(outputs, key=lambda pair: pair[0])
-            ]
-            add_to_ontology(g_onto, inputs, outputs)
+            uri = onto.BASE[entry[1].toPython()] if entry[3] is None else entry[3]
+            add_to_ontology(g_onto, inputs, outputs, uri)
+            data = {
+                "label": entry[1].toPython(),
+                "id": entry[2].toPython(),
+                "taxonomyOperations": [split_uri(uri)[1]],
+                "inputs": [
+                    {"Type": [split_uri(x)[1]]}
+                    for _, x in sorted(inputs, key=lambda pair: pair[0])
+                ]
+                "outputs": [
+                    {"Type": [split_uri(x)[1]]}
+                    for _, x in sorted(outputs, key=lambda pair: pair[0])
+                ]
+            }
             all_data.append(data)
 
     return all_data, g_onto
