@@ -24,7 +24,7 @@ def run_ape(
         taxonomy_path = os.path.join(temp_dir, "taxonomy.owl")
         constraints_path = os.path.join(temp_dir, "constraints.json")
         config_path = os.path.join(temp_dir, "config.json")
-        config = config = Config(
+        config = Config(
             ontology_path=taxonomy_path,
             ontologyPrefixIRI="http://pyiron.org/ontology/",
             tool_annotations_path=tool_annotation_path,
