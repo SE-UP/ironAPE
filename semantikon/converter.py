@@ -1,3 +1,4 @@
+from typing import Any
 import json
 from rdflib import RDF, RDFS, OWL, BNode, Graph
 from rdflib.namespace import split_uri
