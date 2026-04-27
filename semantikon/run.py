@@ -15,8 +15,10 @@ def run_ape(
     executable_path: str | None = None,
     executable: str = "APE-2.6.0-executable.jar",
 ):
-    executable_path = os.path.dirname(os.path.abspath(__file__))
-    executable = os.path.join(executable_path, executable)
+    if executable_path is None:
+        executable_path = os.path.dirname(os.path.abspath(__file__))
+    if not os.path.isabs(executable):
+        executable = os.path.join(executable_path, executable)
     all_data, g_onto = knowledge_graph_to_ape(graph)
 
     with tempfile.TemporaryDirectory() as temp_dir:
