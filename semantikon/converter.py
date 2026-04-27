@@ -106,7 +106,7 @@ def knowledge_graph_to_ape(graph: Graph) -> tuple[list[dict[str, Any]], Graph]:
                 "inputs": [
                     {"Type": [split_uri(x)[1]]}
                     for _, x in sorted(inputs, key=lambda pair: pair[0])
-                ]
+                ],
                 "outputs": [
                     {"Type": [split_uri(x)[1]]}
                     for _, x in sorted(outputs, key=lambda pair: pair[0])
