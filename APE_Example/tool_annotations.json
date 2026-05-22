@@ -100,9 +100,9 @@
         "implementation": { }
       },
       {
-        "label": "relax_structure",
-        "id": "relax_structure",
-        "taxonomyOperations": ["RelaxStructure"],
+        "label": "relax_structure_gpaw",
+        "id": "relax_structure_gpaw",
+        "taxonomyOperations": ["RelaxStructure_GPAW"],
         "inputs": [
           { "Type": ["Bulk"] }
         ],
@@ -112,16 +112,28 @@
         "implementation": { "code": "# Relax Structure\nrelax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')\nrelax_job.structure = vacancy_structure\nrelax_job.potential = relax_job.list_potentials()[0]\nrelax_job.calc_minimize(pressure=0.0)\nrelax_job.run()\nrelax_structure = relax_job.get_final_structure()\n" }
       },
       {
-        "label": "relax_structure",
-        "id": "relax_structure",
-        "taxonomyOperations": ["RelaxStructure"],
+        "label": "relax_structure_sphinx",
+        "id": "relax_structure_sphinx",
+        "taxonomyOperations": ["RelaxStructure_Sphinx"],
         "inputs": [
-          { "Type": ["Slab"] }
+          { "Type": ["Bulk"] }
         ],
         "outputs": [
-          { "Type": ["Slab"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
+          { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
-        "implementation": { "code": "# Relax Structure\nrelax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')\nrelax_job.structure = vacancy_structure\nrelax_job.potential = relax_job.list_potentials()[0]\nrelax_job.calc_minimize(pressure=0.0)\nrelax_job.run()\nrelax_structure = relax_job.get_final_structure()\n" }
+        "implementation": { "code": "" }
+      },
+      {
+        "label": "relax_structure_vasp",
+        "id": "relax_structure_vasp",
+        "taxonomyOperations": ["RelaxStructure_VASP"],
+        "inputs": [
+          { "Type": ["Bulk"] }
+        ],
+        "outputs": [
+          { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
+        ],
+        "implementation": { "code": "" }
       },
       {
         "label": "create_job_lammps",
@@ -299,9 +311,9 @@
         "implementation": { }
       },
       {
-        "label": "calc_chemical_potential_A",
-        "id": "calc_chemical_potential_A",
-        "taxonomyOperations": ["CalcChemicalPotentialA"],
+        "label": "calc_chem_pot_Al",
+        "id": "calc_chem_pot_Al",
+        "taxonomyOperations": ["CalcChemicalPotentialAl"],
         "inputs": [
           { "Type": ["Material"] }
         ],
@@ -311,9 +323,34 @@
         "implementation": { }
       },
       {
-        "label": "calc_chemical_potential_B",
-        "id": "calc_chemical_potential_B",
-        "taxonomyOperations": ["CalcChemicalPotentialB"],
+        "label": "calc_chem_pot_Fe",
+        "id": "calc_chem_pot_Fe",
+        "taxonomyOperations": ["CalcChemicalPotentialFe"],
+        "inputs": [
+          { "Type": ["Material"] }
+        ],
+        "outputs": [
+          { "Type": ["ChemicalPotential"], "Format": ["Float"] }
+        ],
+        "implementation": { }
+      },
+      {
+        "label": "calc_chem_pot_Al",
+        "id": "calc_chem_pot_Al",
+        "taxonomyOperations": ["CalcChemicalPotentialAl"],
+        "inputs": [
+          { "Type": ["ChemicalPotential"] },
+          { "Type": ["Material"] }
+        ],
+        "outputs": [
+          { "Type": ["ChemicalPotential"], "Format": ["Float"] }
+        ],
+        "implementation": { "code": "" }
+      },
+      {
+        "label": "calc_chem_pot_Fe",
+        "id": "calc_chem_pot_Fe",
+        "taxonomyOperations": ["CalcChemicalPotentialFe"],
         "inputs": [
           { "Type": ["ChemicalPotential"] },
           { "Type": ["Material"] }
