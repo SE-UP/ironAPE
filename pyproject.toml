@@ -12,7 +12,7 @@ requires-python = ">=3.10"
 dependencies = [
     "rdflib",
     "pydantic>=2",
-    "semantikon",
+    "semantikon>=1.2.0",
 ]
 
 [project.optional-dependencies]

@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main, restructure]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -el {0}  # required for micromamba activation
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-name: ironape
+          create-args: >-
+            python=3.13
+            semantikon=1.2.0
+            rdflib
+            pydantic>=2
+            pytest
+          condarc: |
+            channels:
+              - conda-forge
+
+      - name: Install ironAPE
+        run: pip install --no-deps -e .
+
+      - name: Run tests
+        run: pytest tests/ -v
