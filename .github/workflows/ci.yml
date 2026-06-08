@@ -9,26 +9,16 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash -el {0}
 
     steps:
       - uses: actions/checkout@v4
 
-      - uses: conda-incubator/setup-miniconda@v3
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
-          channels: conda-forge
-          channel-priority: strict
-          activate-environment: ironape
-          environment-file: false
 
-      - name: Install dependencies
-        run: conda install -y semantikon=1.2.0 rdflib "pydantic>=2" pytest
-
-      - name: Install ironAPE
-        run: pip install --no-deps -e .
+      - name: Install ironAPE and dependencies
+        run: pip install -e ".[dev]"
 
       - name: Run tests
         run: pytest tests/ -v
