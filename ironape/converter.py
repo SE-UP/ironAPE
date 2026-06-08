@@ -6,6 +6,7 @@ from semantikon import ontology as onto  # external semantikon package
 
 node_query = """
 PREFIX pmd: <https://w3id.org/pmd/co/PMD_>
+PREFIX iao: <http://purl.obolibrary.org/obo/IAO_>
 
 SELECT ?software ?label ?identifier ?uri WHERE {
     ?software a pmd:0000010 .
