@@ -2,7 +2,7 @@ from typing import Any
 import json
 from rdflib import RDF, RDFS, OWL, BNode, Graph
 from rdflib.namespace import split_uri
-from semantikon import ontology as onto
+from semantikon import ontology as onto  # external semantikon package
 
 node_query = """
 PREFIX pmd: <https://w3id.org/pmd/co/PMD_>

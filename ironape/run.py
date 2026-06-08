@@ -3,8 +3,8 @@ import os
 import tempfile
 import subprocess
 from rdflib import Graph
-from ironAPE.semantikon.converter import knowledge_graph_to_ape
-from ironAPE.semantikon.config import Config
+from ironape.converter import knowledge_graph_to_ape
+from ironape.config import Config
 
 
 
