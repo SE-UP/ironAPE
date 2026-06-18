@@ -21,6 +21,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/materials_science#AlConcentration -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#AlConcentration">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#MaterialProperty"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/materials_science#Aluminium -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#Aluminium">
@@ -81,6 +89,14 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalcMD">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#ConfigureJob"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#CalculateAlConcentration -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateAlConcentration">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
     </owl:Class>
     
 

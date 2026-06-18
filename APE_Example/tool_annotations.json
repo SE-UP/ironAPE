@@ -298,6 +298,19 @@
         "implementation": { }
       },
       {
+        "label": "calc_Al_concentration",
+        "id": "calc_Al_concentration",
+        "taxonomyOperations": ["CalculateAlConcentration"],
+        "inputs": [
+          { "Type": ["DefectConcentration"], "Format": ["Float"] },
+          { "Type": ["DefectConcentration"], "Format": ["Float"] }
+        ],
+        "outputs": [
+          { "Type": ["AlConcentration"], "Format": ["Float"] }
+        ],
+        "implementation": { }
+      },
+      {
         "label": "calc_defect_concentration",
         "id": "calc_defect_concentration",
         "taxonomyOperations": ["CalculateDefectConcentration"],

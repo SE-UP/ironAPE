@@ -13,7 +13,7 @@
   "solutions_dir_path": "./defect_concentration/solution/",
   "solution_length": {
     "min": 1,
-    "max": 12
+    "max": 20
   },
   "solutions": "1000",
   "number_of_execution_scripts": "3",
