@@ -2,10 +2,11 @@ from typing import Any
 import json
 from rdflib import RDF, RDFS, OWL, BNode, Graph
 from rdflib.namespace import split_uri
-from semantikon import ontology as onto
+from semantikon import ontology as onto  # external semantikon package
 
 node_query = """
 PREFIX pmd: <https://w3id.org/pmd/co/PMD_>
+PREFIX iao: <http://purl.obolibrary.org/obo/IAO_>
 
 SELECT ?software ?label ?identifier ?uri WHERE {
     ?software a pmd:0000010 .
@@ -120,11 +121,11 @@ def knowledge_graph_to_ape(graph: Graph) -> tuple[list[dict[str, Any]], Graph]:
 
 if __name__ == "__main__":
     graph = Graph()
-    graph.parse("example/example_function_ontology.ttl")
+    graph.parse("examples/example_function_ontology.ttl")
     all_data, g_onto = knowledge_graph_to_ape(graph)
 
-    with open("example/tool_annotations.json", "w") as f:
+    with open("examples/tool_annotations.json", "w") as f:
         json.dump({"functions": all_data}, f, indent=4)
 
-    with open("example/taxonomy.owl", "w") as f:
+    with open("examples/taxonomy.owl", "w") as f:
         f.write(g_onto.serialize(format="xml"))
