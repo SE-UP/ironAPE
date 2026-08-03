@@ -19,5 +19,8 @@ dependencies = [
 dev = ["pytest"]
 
 [tool.setuptools.packages.find]
-where = ["."]
+where = ["src"]
 include = ["ironape*"]
+
+[tool.setuptools.package-dir]
+"" = "src"
