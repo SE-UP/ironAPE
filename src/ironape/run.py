@@ -7,7 +7,6 @@ from ironape.converter import knowledge_graph_to_ape
 from ironape.config import Config
 
 
-
 def run_ape(
     graph: Graph,
     inputs: list[dict[str, list[str]]],
@@ -34,7 +33,7 @@ def run_ape(
             solutions_dir_path=".",
             inputs=inputs,
             outputs=outputs,
-        ) 
+        )
 
         with open(tool_annotation_path, "w") as f:
             json.dump({"functions": all_data}, f, indent=4)

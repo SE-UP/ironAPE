@@ -112,7 +112,8 @@ def knowledge_graph_to_ape(graph: Graph) -> tuple[list[dict[str, Any]], Graph]:
                 "outputs": [
                     {"Type": [split_uri(x)[1]]}
                     for _, x in sorted(outputs, key=lambda pair: pair[0])
-                ]
+                ],
+                "implementation": {"cwl_reference": entry[1].toPython()},
             }
             all_data.append(data)
 

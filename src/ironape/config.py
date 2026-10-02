@@ -1,6 +1,7 @@
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Dict, List
 
+
 class Config(BaseModel):
     ontology_path: str
     ontologyPrefixIRI: str
@@ -24,4 +25,3 @@ class Config(BaseModel):
     use_all_generated_data: str = "one"
 
     model_config = ConfigDict(strict=True)  # Enforce strict type checking
-
