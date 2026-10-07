@@ -1,11 +1,13 @@
-import json
 import contextlib
+import json
 import os
-import tempfile
 import subprocess
+import tempfile
+
 from rdflib import Graph
-from ironape.converter import knowledge_graph_to_ape
+
 from ironape.config import Config
+from ironape.converter import knowledge_graph_to_ape
 
 
 def run_ape(

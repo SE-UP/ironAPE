@@ -1,5 +1,5 @@
+
 from pydantic import BaseModel, ConfigDict, Field
-from typing import Dict, List
 
 
 class Config(BaseModel):
@@ -8,13 +8,13 @@ class Config(BaseModel):
     tool_annotations_path: str
     constraints_path: str
     solutions_dir_path: str
-    inputs: List[Dict[str, List[str]]]
-    outputs: List[Dict[str, List[str]]]
+    inputs: list[dict[str, list[str]]]
+    outputs: list[dict[str, list[str]]]
     toolsTaxonomyRoot: str = Field(default="Tool")
-    dataDimensionsTaxonomyRoots: List[str] = Field(default=["Type", "Format"])
+    dataDimensionsTaxonomyRoots: list[str] = Field(default=["Type", "Format"])
     strict_tool_annotations: bool = False
     timeout_sec: float = 300
-    solution_length: Dict[str, int] = Field(default={"min": 1, "max": 10})
+    solution_length: dict[str, int] = Field(default={"min": 1, "max": 10})
     solutions: int = 1000
     number_of_execution_scripts: int = 3
     number_of_generated_graphs: int = 30

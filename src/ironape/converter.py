@@ -1,6 +1,7 @@
-from typing import Any
 import json
-from rdflib import RDF, RDFS, OWL, BNode, Graph
+from typing import Any
+
+from rdflib import OWL, RDF, RDFS, Graph
 from rdflib.namespace import split_uri
 from semantikon import ontology as onto  # external semantikon package
 
