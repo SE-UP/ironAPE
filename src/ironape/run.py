@@ -1,5 +1,6 @@
 import contextlib
 import importlib
+import itertools
 import json
 import os
 import re
@@ -31,7 +32,7 @@ def run_ape(
     executable_path: str | None = None,
     executable: str = "APE-2.6.0-executable.jar",
     working_directory: str | None = None,
-) -> tuple[str, str]:
+) -> list:
     """
     Run the APE tool with the given knowledge graph, inputs, and outputs.
 
@@ -44,7 +45,7 @@ def run_ape(
         working_directory (str | None): Directory to use for temporary files. If None, a temporary directory is created.
 
     Returns:
-        tuple[str, str]: A tuple containing the standard output and standard error from the APE execution.
+        list: A list of flowrep recipes from the APE tool.
     """
     if executable_path is None:
         executable_path = os.path.dirname(os.path.abspath(__file__))
@@ -85,8 +86,15 @@ def run_ape(
             ["java", "-jar", executable, config_path],
             capture_output=True,
             text=True,
+            cwd=temp_dir,
         )
-    return output.stdout, output.stderr
+        recipes = []
+        for ii in itertools.count():
+            file_name = os.path.join(temp_dir, "CWL", f"candidate_workflow_{ii + 1}.cwl")
+            if not os.path.exists(file_name):
+                break
+            recipes.append(cwl_to_flowrep(file_name, graph))
+    return recipes
 
 
 def _get_function_name(g, f_node):
