@@ -1,5 +1,6 @@
-from rdflib import RDF, Graph, OWL, Namespace
 from typing import Annotated
+
+from rdflib import OWL, Namespace
 from semantikon import ontology as onto
 from semantikon.metadata import SemantikonURI, meta
 
@@ -37,7 +38,6 @@ def wash(
     Clothes,
     {"triples": (EX.hasProperty, uri_cleaned), "derived_from": "inputs.clothes"},
 ]:
-    ...
     return clothes
 
 
@@ -46,7 +46,6 @@ def dye(
 ) -> Annotated[
     Clothes, {"triples": (EX.hasProperty, uri_color), "derived_from": "inputs.clothes"}
 ]:
-    ...
     return clothes
 
 
@@ -61,7 +60,6 @@ def sell(
         },
     ],
 ) -> int:
-    ...
     return 10
 
 

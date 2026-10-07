@@ -1,11 +1,13 @@
+import contextlib
 import json
 import os
-import tempfile
 import subprocess
-from rdflib import Graph
-from ironape.converter import knowledge_graph_to_ape
-from ironape.config import Config
+import tempfile
 
+from rdflib import Graph
+
+from ironape.config import Config
+from ironape.converter import knowledge_graph_to_ape
 
 
 def run_ape(
@@ -14,14 +16,35 @@ def run_ape(
     outputs: list[dict[str, list[str]]],
     executable_path: str | None = None,
     executable: str = "APE-2.6.0-executable.jar",
-):
+    working_directory: str | None = None,
+) -> tuple[str, str]:
+    """
+    Run the APE tool with the given knowledge graph, inputs, and outputs.
+
+    Args:
+        graph (Graph): The knowledge graph to be used.
+        inputs (list[dict[str, list[str]]]): List of input specifications.
+        outputs (list[dict[str, list[str]]]): List of output specifications.
+        executable_path (str | None): Path to the APE executable. If None, uses the current directory.
+        executable (str): Name of the APE executable file.
+        working_directory (str | None): Directory to use for temporary files. If None, a temporary directory is created.
+
+    Returns:
+        tuple[str, str]: A tuple containing the standard output and standard error from the APE execution.
+    """
     if executable_path is None:
         executable_path = os.path.dirname(os.path.abspath(__file__))
     if not os.path.isabs(executable):
         executable = os.path.join(executable_path, executable)
     all_data, g_onto = knowledge_graph_to_ape(graph)
 
-    with tempfile.TemporaryDirectory() as temp_dir:
+    if working_directory is None:
+        dir_context = tempfile.TemporaryDirectory()
+    else:
+        os.makedirs(working_directory, exist_ok=True)
+        dir_context = contextlib.nullcontext(os.path.abspath(working_directory))
+
+    with dir_context as temp_dir:
         tool_annotation_path = os.path.join(temp_dir, "tool_annotations.json")
         taxonomy_path = os.path.join(temp_dir, "taxonomy.owl")
         constraints_path = os.path.join(temp_dir, "constraints.json")
@@ -34,7 +57,7 @@ def run_ape(
             solutions_dir_path=".",
             inputs=inputs,
             outputs=outputs,
-        ) 
+        )
 
         with open(tool_annotation_path, "w") as f:
             json.dump({"functions": all_data}, f, indent=4)

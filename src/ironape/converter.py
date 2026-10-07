@@ -1,6 +1,7 @@
-from typing import Any
 import json
-from rdflib import RDF, RDFS, OWL, BNode, Graph
+from typing import Any
+
+from rdflib import OWL, RDF, RDFS, Graph
 from rdflib.namespace import split_uri
 from semantikon import ontology as onto  # external semantikon package
 
@@ -112,7 +113,8 @@ def knowledge_graph_to_ape(graph: Graph) -> tuple[list[dict[str, Any]], Graph]:
                 "outputs": [
                     {"Type": [split_uri(x)[1]]}
                     for _, x in sorted(outputs, key=lambda pair: pair[0])
-                ]
+                ],
+                "implementation": {"cwl_reference": entry[1].toPython()},
             }
             all_data.append(data)
 
