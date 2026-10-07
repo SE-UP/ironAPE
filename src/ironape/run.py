@@ -3,20 +3,22 @@ import importlib
 import json
 import os
 import re
-import networkx as nx
-from semantikon.flowrep_dict import _flowrep_recipe_from_callable
-import rdflib
 import subprocess
 import tempfile
 from pathlib import Path
 
+import networkx as nx
+import rdflib
 from cwl_utils import parser
 from rdflib import Graph
 from semantikon import ontology
-from semantikon.flowrep_to_networkx import Input, Node, Output
 from semantikon.cwl import save_cwl_file
-from semantikon.kg_to_flowrep import _networkx_to_flowrep, _graph_to_function, Node, Input, Output
-
+from semantikon.flowrep_dict import _flowrep_recipe_from_callable
+from semantikon.flowrep_to_networkx import Input, Node, Output
+from semantikon.kg_to_flowrep import (
+    _graph_to_function,
+    _networkx_to_flowrep,
+)
 
 from ironape.config import Config
 from ironape.converter import knowledge_graph_to_ape, knowledge_graph_to_cwl
@@ -92,7 +94,6 @@ def _get_function_name(g, f_node):
         if (denoted_by, rdflib.RDF.type, ontology.SNS.function_name) in g:
             return g.value(denoted_by, ontology.SNS.has_value).toPython()
     raise ValueError(f"No function name found for node {f_node}")
-
 
 
 def serialize_and_convert_to_networkx(uri: str | Path) -> ontology.SemantikonDiGraph:
@@ -194,8 +195,7 @@ def _add_node(
     _step_outputs: dict[str, list[str]] = {}
     for step in wf.steps:
         _step_outputs[_get_name(step.id)] = [
-            _get_port_name(o.id)
-            for o in parser.load_document_by_uri(step.run).outputs
+            _get_port_name(o.id) for o in parser.load_document_by_uri(step.run).outputs
         ]
     for step in wf.steps:
         node = Node(owner=prefix, name=_get_name(step.id))
@@ -245,7 +245,9 @@ def _port_relabeling(G: nx.DiGraph, node: Node, f: dict) -> dict:
         f["data"]["qualname"],
     )
     recipe_outputs = _flowrep_recipe_from_callable(func, node_type="atomic").outputs
-    output_names = {a["position"]: recipe_outputs[a["position"]] for a in f["output_args"]}
+    output_names = {
+        a["position"]: recipe_outputs[a["position"]] for a in f["output_args"]
+    }
     for port_cls, by_position in (
         (Input, {a["position"]: a["arg"] for a in f["input_args"]}),
         (Output, output_names),
@@ -280,9 +282,13 @@ def _terminal_relabeling(G: nx.DiGraph, root: Node) -> dict:
     )
     for n in ports:
         if isinstance(n, Input):
-            linked = [m for m in G.successors(n) if isinstance(m, Input) and m.node != root]
+            linked = [
+                m for m in G.successors(n) if isinstance(m, Input) and m.node != root
+            ]
         else:
-            linked = [m for m in G.predecessors(n) if isinstance(m, Output) and m.node != root]
+            linked = [
+                m for m in G.predecessors(n) if isinstance(m, Output) and m.node != root
+            ]
         new = _unique(linked[0].port if linked else n.port)
         if new != n.port:
             mapping[n] = type(n)(node=root, port=new)

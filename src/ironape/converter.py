@@ -1,11 +1,11 @@
-from typing import Any
 import json
+from typing import Any, cast
+
 from cwl_utils import parser
-from rdflib import RDF, RDFS, OWL, BNode, Graph, URIRef
+from rdflib import OWL, RDF, RDFS, Graph, URIRef
 from rdflib.namespace import split_uri
-from schema_salad.utils import yaml_no_ts
-from semantikon import ontology as onto  # external semantikon package
 from semantikon import cwl, ontology
+from semantikon import ontology as onto  # external semantikon package
 
 node_query = """
 PREFIX pmd: <https://w3id.org/pmd/co/PMD_>
@@ -203,7 +203,6 @@ def knowledge_graph_to_cwl(
         doc=data["data"].get("docstring") or None,
         cwlVersion=cwl_version,
     )
-
 
 
 def knowledge_graph_to_ape(graph: Graph) -> tuple[list[dict[str, Any]], Graph]:
