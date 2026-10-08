@@ -1,5 +1,6 @@
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
 from typing import Annotated
 
 from rdflib import Namespace
@@ -32,8 +33,11 @@ class TestAPE(unittest.TestCase):
     def test_full_run(self):
         g = onto.function_to_knowledge_graph(get_speed)
         g += onto.function_to_knowledge_graph(get_kinetic_energy)
-        workflow_path = Path(__file__).resolve().parent / "static/kinetic_energy/candidate_workflow_1.cwl"
-        print(cwl_to_flowrep(str(workflow_path), g))
+        fixture_path = Path(__file__).resolve().parent / "static/kinetic_energy/candidate_workflow_1.cwl"
+        with TemporaryDirectory() as temp_dir:
+            workflow_path = Path(temp_dir) / fixture_path.name
+            workflow_path.write_text(fixture_path.read_text())
+            self.assertIsNotNone(cwl_to_flowrep(str(workflow_path), g))
 
 
 if __name__ == "__main__":
