@@ -6,7 +6,6 @@ import os
 import re
 import subprocess
 import tempfile
-from collections.abc import Collection
 from pathlib import Path
 
 import networkx as nx
@@ -26,8 +25,8 @@ from ironape.config import Config
 from ironape.converter import knowledge_graph_to_ape, knowledge_graph_to_cwl
 
 
-def _convert_to_ape_io(args: Collection[str] | str) -> list[str]:
-    if not isinstance(args, Collection):
+def _convert_to_ape_io(args: list | tuple | set | str) -> list[str]:
+    if not isinstance(args, list | tuple | set):
         args = [args]
     if isinstance(args[0], dict):
         return args
@@ -36,8 +35,8 @@ def _convert_to_ape_io(args: Collection[str] | str) -> list[str]:
 
 def run_ape(
     graph: Graph,
-    inputs: Collection[str] | str,
-    outputs: Collection[str] | str,
+    inputs: list | tuple | set | str,
+    outputs: list | tuple | set | str,
     executable_path: str | None = None,
     executable: str = "APE-2.6.0-executable.jar",
     working_directory: str | None = None,
