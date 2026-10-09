@@ -1,4 +1,5 @@
 import unittest
+
 from rdflib import Graph
 
 from ironape.converter import knowledge_graph_to_ape

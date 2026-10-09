@@ -33,7 +33,10 @@ class TestAPE(unittest.TestCase):
     def test_full_run(self):
         g = onto.function_to_knowledge_graph(get_speed)
         g += onto.function_to_knowledge_graph(get_kinetic_energy)
-        fixture_path = Path(__file__).resolve().parent / "static/kinetic_energy/candidate_workflow_1.cwl"
+        fixture_path = (
+            Path(__file__).resolve().parent
+            / "static/kinetic_energy/candidate_workflow_1.cwl"
+        )
         with TemporaryDirectory() as temp_dir:
             workflow_path = Path(temp_dir) / fixture_path.name
             workflow_path.write_text(fixture_path.read_text())
