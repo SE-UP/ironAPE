@@ -29,6 +29,8 @@ from ironape.converter import knowledge_graph_to_ape, knowledge_graph_to_cwl
 def _convert_to_ape_io(args: Collection[str] | str) -> list[str]:
     if not isinstance(args, Collection):
         args = [args]
+    if isinstance(args[0], dict):
+        return args
     return [{"Type": [str(arg)]} for arg in args]
 
 
