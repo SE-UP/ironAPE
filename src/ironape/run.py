@@ -90,7 +90,7 @@ def run_ape(
             json.dump({"constraints": []}, f, indent=4)
         with open(config_path, "w") as f:
             json.dump(config.model_dump(), f, indent=4)
-        output = subprocess.run(
+        subprocess.run(
             ["java", "-jar", executable, config_path],
             capture_output=True,
             text=True,
