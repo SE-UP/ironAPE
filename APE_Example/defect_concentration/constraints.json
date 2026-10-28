@@ -60,8 +60,8 @@
         { "Tool" : ["CreateStructure"]},
         { "Tool" : ["CreateStructure"]}
       ]
-    }
-    ,{
+    },
+    {
       "constraintid": "itn_m",
       "parameters": [
         { "Tool" : ["CalcChemicalPotentialAl"]},
@@ -130,6 +130,13 @@
       "constraintid": "connected_op",
       "parameters": [
         { "Tool" : ["CreateStructureBulk"]},
+        { "Tool" : ["RunDFT"]}
+      ]
+    },
+    {
+      "constraintid": "connected_op",
+      "parameters": [
+        { "Tool" : ["RelaxStructure"]},
         { "Tool" : ["RunDFT"]}
       ]
     }

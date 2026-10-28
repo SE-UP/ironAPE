@@ -11,25 +11,50 @@ node2076131627=$2
 
 python - << EOF
 from pyiron.project import Project
-pr = Project('example_project')
+import math
+# Create Project
+project = Project(path=projectPath)
 
-structure = pr.create.structure.ase.bulk(Material, cubic=True)
+# Create Structure
+originalStructure = project.create.structure.bulk('FeAl', crystalstructure='cesiumchloride', a=2.9, cubic=True)
+originalStructure = originalStructure.repeat([2, 2, 2])
 
-# Error: Tool 'run_gpaw' is missing the execution code. Skipping.
-# Create Vacancy Structure
-vacancy_structure = structure.copy()
-del vacancy_structure[1]
+# Calculate chemical potential of Al
+bulk_Al = project.create.structure.bulk('Al', crystalstructure='fcc')
+calc_potential_job = project.create.job.DFT(jobName, delete_existing_job=True)
+calc_potential_job.structure = bulk_Al
+calc_potential_job.run()
+chemPotential = calc_potential_job.output.energy_tot[0]
 
-# Relax Structure
-relax_job = pr.create_job(job_type=pr.job_type.Lammps, job_name='lammps_relax')
-relax_job.structure = vacancy_structure
-relax_job.potential = relax_job.list_potentials()[0]
-relax_job.calc_minimize(pressure=0.0)
+# Create Vacancy Al
+vacancyAl = structure.copy()
+del vacancyAl[position]
+
+# Run Gpaw
+calc_energy_job = project.create.job.Gpaw(jobName, delete_existing_job=True)
+calc_energy_job.structure = structure
+calc_energy_job.run()
+energy = calc_energy_job.output.energy_tot[0]
+
+# Relax Structure Vasp
+relax_job = project.create.job.Vasp(jobName, delete_existing_job=True)
+relax_job.structure = structure
+relax_job.calc_minimize()
 relax_job.run()
-relax_structure = relax_job.get_final_structure()
+relaxedStructure = relax_job.get_structure()
 
-# Error: Tool 'run_gpaw' is missing the execution code. Skipping.
-# Error: Tool 'calculate_defect_formation_energy' is missing the execution code. Skipping.
-# Error: Tool 'calc_chemical_potential_A' is missing the execution code. Skipping.
-# Error: Tool 'calc_defect_concentration' is missing the execution code. Skipping.
+# Run Gpaw
+calc_energy_job = project.create.job.Gpaw(jobName, delete_existing_job=True)
+calc_energy_job.structure = structure
+calc_energy_job.run()
+energy = calc_energy_job.output.energy_tot[0]
+
+# Calculate defect formation energy
+defectFormationEnergy = energyDefect - energyOriginal + chemPotential
+
+# Calculate defect concentration
+k_B = 0.0000862
+temp = 1000
+concentration_defect = math.exp(-defectFormationEnergy/(k_B * temp))
+
 echo "1. output is: $node-1569910685"

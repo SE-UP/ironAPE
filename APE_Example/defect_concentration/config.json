@@ -18,7 +18,8 @@
   "solutions": "1000",
   "number_of_execution_scripts": "3",
   "number_of_generated_graphs": "30",
-  "number_of_cwl_files": "0",
+  "number_of_cwl_files": "3",
+  "create_partial_scripts": "true",
   "tool_seq_repeat": "false",
   "inputs": [ { "Type": ["FeAl"], "Format": ["String"] }, { "Type": ["Position"], "Format": ["Coordinates"]} ],
   "outputs": [

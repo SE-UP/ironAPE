@@ -7,7 +7,7 @@
         "outputs": [
           { "Type": ["Project"], "Format": ["pyiron_atomistics.project.Project"] }
         ],
-        "implementation": { "code": "python - << EOF\nfrom pyiron.project import Project\n# Create Project\nproject = Project(path=projectPath)\n" }
+        "implementation": { "code": "python - << EOF\nfrom pyiron.project import Project\nimport math\n# Create Project\nproject = Project(path=projectPath)\n" }
       },
       {
         "label": "create_structure_bulk",
@@ -109,7 +109,7 @@
         "outputs": [
           { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
-        "implementation": { "code": "# Relax Structure Gpaw\nrelax_job = project.create.job.Gpaw(jobName, delete_existing_job=False)\nrelax_job.structure = structure\nrelax_job.calc_minimize()\nrelax_job.run()\nrelaxedStructure = relax_job.get_structure()\n" }
+        "implementation": { "code": "# Relax Structure Gpaw\nrelax_job = project.create.job.Gpaw(jobName, delete_existing_job=True)\nrelax_job.structure = structure\nrelax_job.calc_minimize()\nrelax_job.run()\nrelaxedStructure = relax_job.get_structure()\n" }
       },
       {
         "label": "relax_structure_sphinx",
@@ -121,7 +121,7 @@
         "outputs": [
           { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
-        "implementation": { "code": "# Relax Structure Sphinx\nrelax_job = project.create.job.Sphinx(jobName, delete_existing_job=False)\nrelax_job.structure = structure\nrelax_job.calc_minimize()\nrelax_job.run()\nrelaxedStructure = relax_job.get_structure()\n" }
+        "implementation": { "code": "# Relax Structure Sphinx\nrelax_job = project.create.job.Sphinx(jobName, delete_existing_job=True)\nrelax_job.structure = structure\nrelax_job.calc_minimize()\nrelax_job.run()\nrelaxedStructure = relax_job.get_structure()\n" }
       },
       {
         "label": "relax_structure_vasp",
@@ -133,7 +133,7 @@
         "outputs": [
           { "Type": ["Bulk"], "Format": ["pyiron_atomistics.atomistics.structure.atoms.Atoms"] }
         ],
-        "implementation": { "code": "# Relax Structure Vasp\nrelax_job = project.create.job.Vasp(jobName, delete_existing_job=False)\nrelax_job.structure = structure\nrelax_job.calc_minimize()\nrelax_job.run()\nrelaxedStructure = relax_job.get_structure()\n" }
+        "implementation": { "code": "# Relax Structure Vasp\nrelax_job = project.create.job.Vasp(jobName, delete_existing_job=True)\nrelax_job.structure = structure\nrelax_job.calc_minimize()\nrelax_job.run()\nrelaxedStructure = relax_job.get_structure()\n" }
       },
       {
         "label": "create_job_lammps",
@@ -258,7 +258,7 @@
         "outputs": [
           { "Type": ["Energy"], "Format": ["Float"] }
         ],
-        "implementation": { "code": "# Run Vasp\ncalc_energy_job = project.create.job.Vasp(jobName, delete_existing_job=False)\ncalc_energy_job.structure = structure\ncalc_energy_job.run()\nenergy = calc_energy_job.output.energy_tot[0]\n" }
+        "implementation": { "code": "# Run Vasp\ncalc_energy_job = project.create.job.Vasp(jobName, delete_existing_job=True)\ncalc_energy_job.structure = structure\ncalc_energy_job.run()\nenergy = calc_energy_job.output.energy_tot[0]\n" }
       },
       {
         "label": "run_sphinx",
@@ -270,7 +270,7 @@
         "outputs": [
           { "Type": ["Energy"], "Format": ["Float"] }
         ],
-        "implementation": { "code": "# Run Sphinx\ncalc_energy_job = project.create.job.Sphinx(jobName, delete_existing_job=False)\ncalc_energy_job.structure = structure\ncalc_energy_job.run()\nenergy = calc_energy_job.output.energy_tot[0]\n" }
+        "implementation": { "code": "# Run Sphinx\ncalc_energy_job = project.create.job.Sphinx(jobName, delete_existing_job=True)\ncalc_energy_job.structure = structure\ncalc_energy_job.run()\nenergy = calc_energy_job.output.energy_tot[0]\n" }
       },
       {
         "label": "run_gpaw",
@@ -282,7 +282,7 @@
         "outputs": [
           { "Type": ["Energy"], "Format": ["Float"] }
         ],
-        "implementation": { "code": "# Run Gpaw\ncalc_energy_job = project.create.job.Gpaw(jobName, delete_existing_job=False)\ncalc_energy_job.structure = structure\ncalc_energy_job.run()\nenergy = calc_energy_job.output.energy_tot[0]\n" }
+        "implementation": { "code": "# Run Gpaw\ncalc_energy_job = project.create.job.Gpaw(jobName, delete_existing_job=True)\ncalc_energy_job.structure = structure\ncalc_energy_job.run()\nenergy = calc_energy_job.output.energy_tot[0]\n" }
       },
       {
         "label": "calculate_defect_formation_energy",
@@ -290,7 +290,8 @@
         "taxonomyOperations": ["CalculateDefectFormationEnergy"],
         "inputs": [
           { "Type": ["Energy"] },
-          { "Type": ["Energy"] }
+          { "Type": ["Energy"] },
+          { "Type": ["ChemicalPotential"] }
         ],
         "outputs": [
           { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
@@ -315,8 +316,7 @@
         "id": "calc_defect_concentration",
         "taxonomyOperations": ["CalculateDefectConcentration"],
         "inputs": [
-          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] },
-          { "Type": ["ChemicalPotential"], "Format": ["Float"] }
+          { "Type": ["DefectFormationEnergy"], "Format": ["Float"] }
         ],
         "outputs": [
           { "Type": ["DefectConcentration"], "Format": ["Float"] }
@@ -333,7 +333,7 @@
         "outputs": [
           { "Type": ["ChemicalPotential"], "Format": ["Float"] }
         ],
-        "implementation": { "code": "# Calculate chemical potential of Al\nbulk_Al = project.create.structure.bulk('Al', crystalstructure='fcc')\ncalc_potential_job = project.create.job.Gpaw(jobName, delete_existing_job=True)\ncalc_potential_job.structure = bulk_Al\ncalc_potential_job.run()\nchemPotential = calc_potential_job.output.energy_tot[0]\n" }
+        "implementation": { "code": "# Calculate chemical potential of Al\nbulk_Al = project.create.structure.bulk('Al', crystalstructure='fcc')\ncalc_potential_job = project.create.job.DFT(jobName, delete_existing_job=True)\ncalc_potential_job.structure = bulk_Al\ncalc_potential_job.run()\nchemPotential = calc_potential_job.output.energy_tot[0]\n" }
       },
       {
         "label": "calc_chem_pot_Fe",
@@ -345,7 +345,7 @@
         "outputs": [
           { "Type": ["ChemicalPotential"], "Format": ["Float"] }
         ],
-        "implementation": { "code": "# Calculate chemical potential of Fe\nbulk_Fe = project.create.structure.bulk('Fe', crystalstructure='bcc')\ncalc_potential_job = project.create.job.Gpaw(jobName, delete_existing_job=True)\ncalc_potential_job.structure = bulk_Fe\ncalc_potential_job.run()\nchemPotential = calc_potential_job.output.energy_tot[0]\n" }
+        "implementation": { "code": "# Calculate chemical potential of Fe\nbulk_Fe = project.create.structure.bulk('Fe', crystalstructure='bcc')\ncalc_potential_job = project.create.job.DFT(jobName, delete_existing_job=True)\ncalc_potential_job.structure = bulk_Fe\ncalc_potential_job.run()\nchemPotential = calc_potential_job.output.energy_tot[0]\n" }
       },
       {
         "label": "calc_chem_pot_Al",
@@ -396,6 +396,19 @@
           { "Type": ["MolecularDynamicsOutput"], "Format": ["Array"] }
         ],
         "implementation": { "code": "print(job['output/generic/temperature'])\nEOF\n" }
+      },
+      {
+        "label": "calc_physical_properties",
+        "id": "calc_physical_properties",
+        "taxonomyOperations": ["CalcPhysicalProperties"],
+        "inputs": [
+          { "Type": ["Material"] }
+        ],
+        "outputs": [
+          { "Type": ["BulkModulus"], "Format": ["Float"] },
+          { "Type": ["LatticeConstant"], "Format": ["Float"] }
+        ],
+        "implementation": { "code": "# Calculate lattice constant and bulk modulus\nreference_job = project.create.job.DFT('DFT_job', delete_existing_job=True)\nreference_job.structure = project.create.structure.bulk('FeAl', crystalstructure='cesiumchloride', a=2.9)\nmurn_job = project.create.job.Murnaghan('murn_job', delete_existing_job=True)\nmurn_job.ref_job = reference_job\nmurn_job.run()\nbulk_modulus = murn_job.content['output/equilibrium_bulk_modulus']\nlattice_constant = (murn_job.content['output/equilibrium_volume']) ** (1/3)\n" }
       }
     ]
  }

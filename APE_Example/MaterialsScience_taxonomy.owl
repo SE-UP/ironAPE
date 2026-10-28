@@ -93,6 +93,14 @@
     
 
 
+    <!-- http://www.semanticweb.org/materials_science#CalcPhysicalProperties -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalcPhysicalProperties">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#GetProperty"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.semanticweb.org/materials_science#CalculateAlConcentration -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#CalculateAlConcentration">
@@ -431,6 +439,14 @@
 
     <owl:Class rdf:about="http://www.semanticweb.org/materials_science#LammpsPotential">
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#Potential"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/materials_science#LatticeConstant -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/materials_science#LatticeConstant">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/materials_science#MaterialProperty"/>
     </owl:Class>
     
 
