@@ -1,0 +1,12 @@
+input_1_Format1_Distance:
+  class: File
+  format: "unknown"
+  path: set_full_path_to_the_file_with_extension_here
+input_2_Format2_time:
+  class: File
+  format: "unknown"
+  path: set_full_path_to_the_file_with_extension_here
+input_3_Format2_Mass:
+  class: File
+  format: "unknown"
+  path: set_full_path_to_the_file_with_extension_here
