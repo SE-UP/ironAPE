@@ -13,7 +13,7 @@ dependencies = [
     "cwl-utils",
     "rdflib",
     "pydantic>=2",
-    "semantikon>=1.2.0",
+    "semantikon>=1.4.0",
 ]
 
 [project.optional-dependencies]

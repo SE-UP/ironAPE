@@ -14,11 +14,11 @@ from cwl_utils import parser
 from rdflib import Graph
 from semantikon import ontology
 from semantikon.cwl import save_cwl_file
-from semantikon.flowrep_dict import _flowrep_recipe_from_callable
 from semantikon.flowrep_to_networkx import Input, Node, Output
 from semantikon.kg_to_flowrep import (
     _graph_to_function,
     _networkx_to_flowrep,
+    _flowrep_recipe_from_callable,
 )
 
 from ironape.config import Config
